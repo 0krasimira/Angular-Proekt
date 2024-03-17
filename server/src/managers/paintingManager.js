@@ -5,3 +5,13 @@ exports.createPainting = (paintingData) => Painting.create(paintingData)
 exports.getAll = () => Painting.find()
 
 exports.getOne = (paintingId) => Painting.findById(paintingId)
+
+// exports.create = (userId, paintingData) => {
+//     const createdPainting = Painting.create({
+//         owner: userId,
+//         ...paintingData
+//     })
+
+//     User.findByIdAndUpdate(userId, {$push: {createdPaintings: createdPainting._id}})
+//     return createdPainting
+// }

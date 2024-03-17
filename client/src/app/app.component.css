@@ -2,11 +2,11 @@
 
 :host {
   display: block;
-  padding-bottom: 60px; /* Ensure space for the footer */
+  padding-bottom: 60px; 
   margin: 0;
-  background-color: #ffb6c1; /* Default background color */
-  min-height: 100vh; /* Ensure the component takes up the full viewport height */
-  position: relative; /* Establish a positioning context for the footer */
+  background-color: #ffb6c1; 
+  min-height: 100vh; 
+  position: relative; 
 }
 
 footer {

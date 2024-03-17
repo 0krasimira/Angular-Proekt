@@ -1,46 +1,102 @@
+/* CSS for .painting-details class */
 .painting-details {
   max-width: 1000px; /* Adjust the width as needed */
   margin: 150px auto 50px auto; /* Move it lower by increasing the top margin */
   padding: 20px;
-  background-color: #f560e1; /* Light Pink */
+  background-color: #6d21639c; /* Light Pink */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
+  justify-content: space-between; /* Adjust button alignment */
   font-family: Arial, sans-serif; /* Ensure Arial font */
+  font-size: 20px;
 }
 
-
+/* CSS for the entire HTML */
 html {
   display: flex;
   justify-content: center; /* Center content horizontally */
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)), url('https://i.pinimg.com/736x/43/cb/65/43cb65aea6814a8abf61850edb1004a3.jpg'); /* Gradient + Image */
-  background-size: cover; /* Cover the entire background */
+  background-image: url('https://i.pinimg.com/564x/ec/9f/36/ec9f3645c4fcb130504851a4a7723f58.jpg'); /* Gradient + Image */
+  background-size: cover;
   background-repeat: no-repeat; /* Prevent image repetition */
-  padding: 20px;
+  padding: 50px;
+ 
 }
-
+/* CSS for the painting image container */
 .painting-image-container {
   flex: 1;
   margin-right: 20px;
 }
 
+/* CSS for the painting image */
 .painting-image {
   max-width: 100%;
   height: auto;
 }
 
+/* CSS for the painting details list */
 .painting-details-list {
   flex: 2;
   list-style-type: none;
   padding: 0;
 }
 
+/* CSS for the painting details list items */
 .painting-details-list li {
   margin-bottom: 10px;
   font-family: Arial, sans-serif; /* Ensure Arial font */
 }
 
+/* CSS for the strong elements within the painting details list */
 .painting-details-list li strong {
   color: #ffdab9; /* Peach */
+  font-size: 20px;
 }
+
+/* CSS for h2 elements with .h2 class */
+.h2 {
+  color: #23102d; /* Darker shade of gray for text */
+  font-family: Arial, sans-serif; /* Professional font family */
+  font-size: 30px; /* Adjust as needed for your design */
+  font-weight: bold; /* Emphasize the heading */
+  letter-spacing: 0.5px; /* Slight increase in letter spacing for readability */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); /* Subtle text shadow for depth */
+}
+
+/* CSS for buttons */
+/* CSS for buttons */
+.buttons {
+  display: flex;
+  flex-direction: column; /* Arrange buttons in a column */
+  gap: 10px; /* Add some space between buttons */
+  margin-right: 10px; /* Move buttons slightly more to the left */
+}
+
+.back-btn, .profile-btn {
+  background-color: #dfdcb5; /* Lighter shade of Baby Lemon Yellow */
+  color: #5f0c3f;
+  border: none;
+  padding: 20px 40px; /* Increased padding for buttons */
+  font-size: 20px; /* Increased font size */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 30px; /* Make buttons rounder */
+  text-shadow: -2px -2px 0 #fff,  
+               2px -2px 0 #fff,
+              -2px 2px 0 #fff,
+               2px 2px 0 #fff; /* Framing effect */
+}
+
+.back-btn:hover, .profile-btn:hover {
+  background-color: #ff4d6b; /* Darker shade of Baby Lemon Yellow on hover */
+  background-image: none; /* Remove gradient background on hover */
+  color: #fff; /* White text on hover */
+  text-shadow: -2px -2px 0 #b4245d,  
+  2px -2px 0 #620027,
+ -2px 2px 0 #620027,
+  2px 2px 0 #620027; /* Framing effect */
+}
+
+

@@ -39,9 +39,14 @@ html {
 
 .painting h2 {
     font-family: Arial, sans-serif;
-    color: #333;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    color: #440432;
+    font-size: 30px;
+    margin: 10px 0 5px; /* Shorter shorthand for margin */
+    background-color: #6e1b3f21;
+
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
 .painting p {
@@ -57,12 +62,27 @@ html {
 }
 
 .details-btn {
-    background-color: #ffb74d; /* Lighter shade of Baby Lemon Yellow */
-    color: #333;
+    background-color: #6d0951; /* Lighter shade of Baby Lemon Yellow */
+    color: #e6e6fa;;
     border: none;
-    padding: 8px 16px; /* Adjusted padding for button */
-    align-self: center; /* Center button horizontally within the container */
-    margin-top: auto; /* Push button to the bottom of the container */
-    margin-bottom: 10px; /* Add some bottom margin */
+    padding: 12px 24px; /* Increased padding for button */
+    font-size: 18px; /* Increased font size for button text */
+    font-weight: bold; /* Make the font thicker */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for color change */
+    width: 100%; /* Make button width 100% of its container */
+    box-sizing: border-box; /* Include padding in button's width calculation */
+    text-align: center; /* Center text horizontally */
+    position: absolute; /* Position the button absolutely */
+    bottom: 0; /* Align the button to the bottom of the container */
+    left: 0; /* Align the button to the left of the container */
+    right: 0; /* Align the button to the right of the container */
+    margin: 0; /* Remove margin */
 }
+.details-btn:hover {
+    background-color: #ffa726; /* Darker shade of Baby Lemon Yellow on hover */
+    color: #fff; /* White text on hover */
+}
+
+
  

@@ -33,6 +33,11 @@ router.get('/paintings/:paintingId', async (req, res) => {
 });
 
 
+router.get('/add', async (req,res) =>{
+    
+})
+
+
 
 
 
