@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <section class="section">
+            <div class="paintings-container">
+                <div *ngFor="let painting of paintings" class="painting-container">
+                    <div class="painting">
+                        <h2>{{painting.title}}</h2>
+                        <p><strong>Price:</strong> ${{painting.price}}</p>
+                        <p><strong>Technique:</strong> {{painting.technique}}</p>
+                        <img [src]="painting.imageUrl" [alt]="painting.title">
+                    </div>
+                    <a [routerLink]="['/paintings', painting._id]">
+                        <button class="details-btn">Details</button>
+                      </a>
+                      
+
+
+                </div>
+            </div>
+        </section>
+        
+    </body>
+</html>
+

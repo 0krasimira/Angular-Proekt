@@ -1,0 +1,117 @@
+html, body {
+    /* Set background image */
+    background-image: url('https://i.pinimg.com/564x/05/b6/d6/05b6d6296f1c0a4004ebdd196a6f89b0.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Adjust to 100vh to fill the viewport */ 
+  }
+  
+  /* */
+  
+  header {
+    /* Apply linear gradient */
+    background: linear-gradient(to bottom, #ff9f86 0%, rgba(209, 181, 233, 0) 100%);
+    padding: 5px;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-shadow: 0 0 5px rgb(237, 122, 99), /* White shadow */
+                 0 0 10px rgba(157, 10, 121, 0.5), /* Red shadow */
+                 0 0 15px rgba(255, 58, 114, 0.808), /* Magenta shadow */
+                 0 0 20px rgba(28, 255, 176, 0.5); /* Cyan shadow */
+    /* animation: wave 5s infinite; */
+  }
+  
+  main {
+    padding: 4px;
+    flex: 1;
+  }
+  
+  section {
+    margin-bottom: 30px;
+    background-color: rgba(249, 249, 249, 0.4); /* Slightly transparent */
+    border-radius: 10px; /* Add rounded corners */
+    padding: 1px; /* Add padding */
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  }
+  
+  h2 {
+    color: #2c3e50; /* Darker text color for better visibility */
+    background-color: rgba(255, 204, 188, 0.4); /* Peach color with transparency */
+    padding: 10px 20px; /* Decrease padding */
+    border-radius: 8px; /* Add rounded corners */
+    text-align: center;
+    font-family: Arial, sans-serif; /* Change font family */
+    font-size: 24px; /* Decrease font size */
+    animation: wave 5s infinite;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sub-h1 {
+    color: #540909; /* Original text color */
+    font-size: 18px; /* Slightly larger font size */
+    font-family: Arial, sans-serif; /* Font family */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), /* White shadow */
+                 0 0 10px rgba(77, 14, 14, 0.5), /* Red shadow */
+                 0 0 15px rgba(255, 0, 255, 0.5), /* Magenta shadow */
+                 0 0 20px rgba(0, 255, 255, 0.5); /* Cyan shadow */
+  }
+  
+  li {
+    margin-bottom: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  h3 {
+    color: #2c3e50; /* Darker text color for better visibility */
+    font-family: Arial, sans-serif; /* Change font family */
+    font-size: 18px; /* Decrease font size */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), /* White shadow */
+    0 0 10px rgba(77, 14, 14, 0.5), /* Red shadow */
+    0 0 15px rgba(255, 0, 255, 0.5), /* Magenta shadow */
+    0 0 20px rgba(0, 255, 255, 0.5); /* Cyan shadow */
+  }
+  
+
+  
+  @keyframes wave {
+    0% {
+        color: #e07d64; /* Peach color */
+        text-shadow: 0 0 10px #ff0180;
+    }
+    25% {
+        color: #ff0180;
+        text-shadow: 0 0 10px #8a2be2;
+    }
+    50% {
+        color: #8a2be2;
+        text-shadow: 0 0 10px #ff0088;
+    }
+    75% {
+        color: #ff0088;
+        text-shadow: 0 0 10px #3e1f87;
+    }
+    100% {
+        color: #e07d64; /* Peach color */
+        text-shadow: 0 0 10px #ff0180;
+    }
+  }
+  
+  .centre {
+    text-align: center;
+  }

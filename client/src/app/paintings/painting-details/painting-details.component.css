@@ -1,0 +1,46 @@
+.painting-details {
+  max-width: 1000px; /* Adjust the width as needed */
+  margin: 150px auto 50px auto; /* Move it lower by increasing the top margin */
+  padding: 20px;
+  background-color: #f560e1; /* Light Pink */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  font-family: Arial, sans-serif; /* Ensure Arial font */
+}
+
+
+html {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)), url('https://i.pinimg.com/736x/43/cb/65/43cb65aea6814a8abf61850edb1004a3.jpg'); /* Gradient + Image */
+  background-size: cover; /* Cover the entire background */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  padding: 20px;
+}
+
+.painting-image-container {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.painting-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.painting-details-list {
+  flex: 2;
+  list-style-type: none;
+  padding: 0;
+}
+
+.painting-details-list li {
+  margin-bottom: 10px;
+  font-family: Arial, sans-serif; /* Ensure Arial font */
+}
+
+.painting-details-list li strong {
+  color: #ffdab9; /* Peach */
+}

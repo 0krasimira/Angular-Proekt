@@ -1,0 +1,163 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80vh; /* Adjust the value to make the document shorter */
+  }
+  
+  .left-square,
+  .right-square {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 45%;
+  }
+  
+  .feature {
+      width: 700px;
+      height: 500px;
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transform: translateX(50px);
+      padding-top: 50px;
+  }
+  
+  #showcase {
+      font-size: 50px;
+      color: #33053f;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+          0 0 10px rgba(115, 255, 229, 0.786),
+          0 0 15px rgba(255, 0, 115, 0.889),
+          0 0 20px rgba(255, 9, 255, 0.91),
+          0 0 25px rgb(241, 255, 138);
+      background-image: url('https://i.pinimg.com/564x/ec/9c/d2/ec9cd29002412b78fbcc210b01136902.jpg');
+  }
+  
+  #connect {
+      font-size: 50px;
+      color: #231740;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+          0 0 10px rgba(115, 255, 229, 0.786),
+          0 0 15px rgba(255, 0, 242, 0.889),
+          0 0 20px rgba(255, 9, 255, 0.91),
+          0 0 25px rgb(225, 255, 0);
+      background-image: url('https://i.pinimg.com/564x/39/0a/36/390a36d91c441fe07deeed5e2071faed.jpg');
+  }
+  
+  #sell {
+      font-size: 50px;
+      color: #542271;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+          0 0 10px rgba(115, 255, 229, 0.786),
+          0 0 15px rgba(0, 255, 166, 0.889),
+          0 0 20px rgba(255, 9, 255, 0.91),
+          0 0 25px rgb(241, 255, 138);
+      background-image: url('https://i.pinimg.com/564x/fe/5b/1d/fe5b1d5b269ded1ed037b82e2a54c4e6.jpg');
+  }
+  
+  #discover {
+      font-size: 50px;
+      color: #acf3dfcb;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+          0 0 10px rgba(21, 79, 69, 0.786),
+          0 0 15px rgba(98, 39, 134, 0.889),
+          0 0 20px rgba(255, 9, 255, 0.91),
+          0 0 25px rgb(228, 255, 22);
+      background-image: url('https://i.pinimg.com/564x/b0/ea/3a/b0ea3a75680552677ef89d7dbd49b3c1.jpg');
+  }
+  
+  #create {
+      font-size: 50px;
+      background-image: url('https://i.pinimg.com/564x/8c/fd/a1/8cfda1119fc83d443e98f2fb10cf04ea.jpg');
+      color: #361063cb;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+          0 0 10px rgba(21, 79, 69, 0.786),
+          0 0 15px rgba(98, 39, 134, 0.889),
+          0 0 20px rgba(255, 9, 255, 0.91),
+          0 0 25px rgb(228, 255, 22);
+  }
+  
+  .get-started {
+      text-align: center;
+      font-size: 20px;
+  }
+  
+  .get-started-p {
+      text-align: center;
+      font-size: 40px;
+      color: #8707a7;
+      font: weight 400px;;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+          0 0 10px rgba(115, 255, 229, 0.786),
+          0 0 15px rgba(255, 0, 115, 0.889),
+          0 0 20px rgba(255, 9, 255, 0.91),
+          0 0 25px rgb(241, 255, 138);
+  }
+  
+  #signup {
+      background-color: #e01e65;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-top: 10px;
+  }
+  
+  #login {
+      color: #e01e65;
+      text-decoration: none;
+  }
+  
+  #login:hover {
+      text-decoration: underline;
+  }
+  
+  /* .html {
+      background-color: #98FFCC;
+  } */
+  
+  
+
+  
+  
+  .right-square-container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .right-square {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%; /* Adjust the width as needed */
+    height: 80%; /* Adjust the height as needed */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+  
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-image: url('https://i.pinimg.com/736x/25/d6/a7/25d6a708bafafa49dfdd351478e96382.jpg'); /* or this one: https://ik.imagekit.io/freeflo/production/3e9b5eed-3cb3-4236-9dba-a9c18fa2e6d2.png?tr=w-3840,q-80&alt=media&pr-true*/
+    background-size: cover;
+    background-position: center;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+   background-color: #98FFCC;
+    padding-bottom: 20px; /* Adjust the padding as needed */
+  
+  }

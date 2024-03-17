@@ -1,0 +1,25 @@
+
+  <html>
+    
+  <body>
+    <div class="painting-details" *ngIf="painting">
+      
+      <div class="painting-image-container">
+        <img class="painting-image" [src]="painting.imageUrl" alt="Painting Image">
+      </div>
+      <ul class="painting-details-list">
+        <h2 class="painting-title">{{ painting.title }}</h2>
+        <li><strong>Year:</strong> {{ painting.year }}</li>
+        <li><strong>Technique:</strong> {{ painting.technique }}</li>
+        <li><strong>Description:</strong> {{ painting.description }}</li>
+        <li><strong>Price:</strong> {{ painting.price }}</li>
+        <li class="author" *ngIf="painting?.author">
+          <strong>Author:</strong> {{ painting.author }} 
+        </li>
+      </ul>
+    </div>
+    <div class="loading" *ngIf="!painting">
+      <p>Loading...</p>
+    </div>
+  </body>
+  </html>

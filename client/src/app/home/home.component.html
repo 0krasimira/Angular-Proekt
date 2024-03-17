@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html class="html">
+<head>
+  <title>Home</title>
+</head>
+<body class="body">
+  <div class="container">
+    <div class="left-square">
+      <div class="feature" id="showcase">
+        <p>Showcase Your Art</p>
+      </div>
+      <div class="feature" id="connect">
+        <p>Connect with Fellow Artists</p>
+      </div>
+      <div class="feature" id="sell">
+        <p>Sell Your Creations</p>
+      </div>
+      <div class="feature" id="discover">
+        <p>Discover like-minded individuals</p>
+      </div>
+      <div class="feature" id="create">
+        <p>Create a lasting impression</p>
+      </div>
+    </div>
+
+    <div class="right-square-container background-image">
+      <div class="right-square">
+        <div class="get-started">
+          <p class="get-started-p">Get Started Today!</p>
+          <p>Don't miss out on the opportunity to be part of our growing community of self-taught artists.</p>
+          <div *ngIf="!isLoggedIn">
+            <button id="signup" href="/register">Sign Up Now</button>
+          <p>Already have an account? <a href="/login" id="login">Log in</a></p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

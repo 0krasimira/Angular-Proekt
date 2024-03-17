@@ -1,0 +1,21 @@
+
+
+:host {
+  display: block;
+  padding-bottom: 60px; /* Ensure space for the footer */
+  margin: 0;
+  background-color: #ffb6c1; /* Default background color */
+  min-height: 100vh; /* Ensure the component takes up the full viewport height */
+  position: relative; /* Establish a positioning context for the footer */
+}
+
+footer {
+  position: absolute; /* Position the footer at the bottom */
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background-color: #ff99c9; /* Baby pink */
+  color: #fff; /* White text */
+  font-family: Arial, Helvetica, sans-serif;
+}

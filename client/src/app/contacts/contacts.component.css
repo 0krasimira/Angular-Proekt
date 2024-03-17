@@ -1,0 +1,69 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body styles */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: rgba(242, 249, 240, 0.8); /* Light mint green background with transparency */
+    color: #333; /* Dark gray text */
+    min-height: 90vh;
+    position: relative;
+    background-image: url('https://i.pinimg.com/736x/47/83/02/4783028f78d051ca027b1fed4b4e4fd5.jpg'); /* URL of your transparent image */
+    background-size: cover; /* Ensure the image covers the entire background */
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #ebff8a; /* Light yellow */
+    color: #333; /* Dark gray text */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Main styles */
+  main {
+    max-width: 1000px; /* Increased max-width */
+    margin: left;
+    padding: 40px; /* Increased padding */
+    background-color: #8fffd239; /* White background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+    /* Center vertically */
+    position: absolute;
+    top: 50%;
+    left: 50%; /*60% - Decreased the left value to move it to the right */
+    transform: translate(-50%, -50%);
+}
+  
+  /* Section styles */
+  section {
+    margin-bottom: 30px;
+  }
+  
+  section h2 {
+    color: #d6e3ff; /* Lavender */
+    margin-bottom: 10px;
+  }
+  
+  /* Link styles */
+  a {
+    color: #1124d1; /* Baby blue */
+    font-weight: bold;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Footer styles */
+ 
+  /* List styles */
+  ul {
+    list-style: none;
+  }
