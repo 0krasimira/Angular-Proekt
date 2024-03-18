@@ -27,3 +27,5 @@ export class PaintingDetailsService implements OnDestroy {
       );
   }
 }
+
+// MAKE A NEW COMPONENT - ADD WITH ITS OWN ADDPAINTING SERVICE!

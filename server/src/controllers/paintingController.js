@@ -6,6 +6,7 @@ router.use((req, res,next) => {
     next()
 })
 
+
 router.get('/paintings', async (req, res) => {
     try {
         const allPaintings = await paintingManager.getAll();
@@ -33,8 +34,15 @@ router.get('/paintings/:paintingId', async (req, res) => {
 });
 
 
-router.get('/add', async (req,res) =>{
-    
+router.post('/paintings', async (req,res) =>{
+    const newPainting = req.body
+    try {
+        await paintingManager.create(newPainting);
+        res.redirect('/home')
+    } catch (err) {
+        const message = getErrorMessage(err)
+        res.status(400).render("stone/create", { ...newPainting, error: message })
+    }
 })
 
 

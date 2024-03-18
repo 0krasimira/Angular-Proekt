@@ -11,6 +11,11 @@ import { FooterComponent } from './core/footer/footer.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { PaintingsModule } from './paintings/paintings.module';
+// import { LoginComponent } from './login/login.component';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { AddPaintingComponent } from './paintings/add-painting/add-painting.component';
+
+// import { RegisterComponent } from './register/register.component';
 
 /*import the HttpClientModule from @angular/common/http,
 
@@ -25,16 +30,18 @@ import { HttpClientModule } from '@angular/common/http';*/
     HomeComponent,
     NavigationComponent, 
     FooterComponent, 
+    AddPaintingComponent , 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, 
-    PaintingsModule
+    ReactiveFormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent], 
-  exports: [FooterComponent]
+  exports: [FooterComponent, ]
 })
 export class AppModule { }
 

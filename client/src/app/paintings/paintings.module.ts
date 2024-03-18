@@ -3,11 +3,17 @@ import { CommonModule } from '@angular/common';
 import { PaintingsListComponent } from './paintings-list/paintings-list.component';
 import { PaintingDetailsComponent } from './painting-details/painting-details.component';
 import { RouterModule } from '@angular/router';
+import { AddPaintingComponent } from './add-painting/add-painting.component';
+
+
 
 @NgModule({
   declarations: [
     PaintingsListComponent,
-    PaintingDetailsComponent
+    PaintingDetailsComponent,
+    AddPaintingComponent,
+    
+    
   ],
   imports: [
     CommonModule, 
@@ -15,7 +21,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     PaintingsListComponent,
-    PaintingDetailsComponent
+    PaintingDetailsComponent,
+    
   ]
 })
 export class PaintingsModule { }

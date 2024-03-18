@@ -66,14 +66,15 @@ html {
 
 /* CSS for buttons */
 /* CSS for buttons */
-.buttons {
+a, .buttons {
   display: flex;
   flex-direction: column; /* Arrange buttons in a column */
   gap: 10px; /* Add some space between buttons */
   margin-right: 10px; /* Move buttons slightly more to the left */
+  text-decoration: none;
 }
 
-.back-btn, .profile-btn {
+ .back-btn, .profile-btn {
   background-color: #dfdcb5; /* Lighter shade of Baby Lemon Yellow */
   color: #5f0c3f;
   border: none;
