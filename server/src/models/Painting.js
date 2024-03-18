@@ -3,29 +3,28 @@ const mongoose = require("mongoose")
 const paintingSchema = new mongoose.Schema({
     title: {
         type: String, 
-        required: true,
+        // required: true,
     },
     year: {
         type: Number, 
-        required: true,
+        // required: true,
     },
     technique: {
         type: String, 
-        required: true,
+        // required: true,
     },
     description: {
         type: String, 
-        required: true,
-        maxLength: [1000, 'Maximum characters exceeded - description cannot be longer than 1000 characters']
+        // required: true,
     },
     imageUrl: {
         type: String, 
-        required: true,
-        match: [/^https?:\/\//, 'Invalid poster link']
+        // required: true,
+        // match: [/^https?:\/\//, 'Invalid poster link']
     },
     price: {
         type: Number, 
-        required: true
+        // required: true
     },
     // likes: [{
     //     type: mongoose.Types.ObjectId,
@@ -37,7 +36,7 @@ const paintingSchema = new mongoose.Schema({
     // },
     author: {
         type: String, 
-        required: true
+        // required: true
     },
     
 })

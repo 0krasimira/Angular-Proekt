@@ -1,5 +1,6 @@
 const router = require("express").Router()
 const paintingManager = require("../managers/paintingManager")
+const getErrorMessage = require('../utils/errorUtils')
 
 router.use((req, res,next) => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:4200')
@@ -34,14 +35,14 @@ router.get('/paintings/:paintingId', async (req, res) => {
 });
 
 
-router.post('/paintings', async (req,res) =>{
-    const newPainting = req.body
+router.post('/add', async (req,res) =>{
+    const painting = req.body
     try {
-        await paintingManager.create(newPainting);
-        res.redirect('/home')
+        const newPainting = await paintingManager.create(painting);
+        res.json(newPainting)
     } catch (err) {
-        const message = getErrorMessage(err)
-        res.status(400).render("stone/create", { ...newPainting, error: message })
+        // const message = getErrorMessage(err)
+        console.log(err.message)
     }
 })
 

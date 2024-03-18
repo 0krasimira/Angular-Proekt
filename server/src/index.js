@@ -4,10 +4,14 @@ const mongoose = require("mongoose")
 const router = require('./controllers/paintingController')
 const userRouter = require('./controllers/userController')
 
+const bodyParser = require("body-parser")
+
+
 const app = express()
 expressConfigurator(app)
 // app.use(cors());
 
+app.use(bodyParser.json({extended: true }));
 ////from here!!!!!!!!!!!!!!!!!
 
 app.use((req, res,next) => {

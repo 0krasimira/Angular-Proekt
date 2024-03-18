@@ -11,7 +11,7 @@ import { AddPaintingComponent } from './add-painting/add-painting.component';
   declarations: [
     PaintingsListComponent,
     PaintingDetailsComponent,
-    AddPaintingComponent,
+    
     
     
   ],
