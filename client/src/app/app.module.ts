@@ -14,6 +14,8 @@ import { PaintingsModule } from './paintings/paintings.module';
 // import { LoginComponent } from './login/login.component';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { AddPaintingComponent } from './paintings/add-painting/add-painting.component';
+import { RegisterComponent } from './register/register.component';
+
 
 // import { RegisterComponent } from './register/register.component';
 
@@ -30,13 +32,13 @@ import { HttpClientModule } from '@angular/common/http';*/
     HomeComponent,
     NavigationComponent, 
     FooterComponent, 
-    AddPaintingComponent , 
+    AddPaintingComponent, RegisterComponent , 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
     
   ],
   providers: [],
