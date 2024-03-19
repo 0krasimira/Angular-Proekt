@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddPaintingService } from './add-painting.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-painting',
@@ -12,7 +13,8 @@ export class AddPaintingComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private addPaintingService: AddPaintingService
+    private addPaintingService: AddPaintingService, 
+    private router: Router
   ) {
     this.paintingForm = this.fb.group({
       title: ['', Validators.required],
@@ -37,7 +39,7 @@ export class AddPaintingComponent implements OnInit {
         (response) => {
           console.log(response)
           console.log('Painting submitted successfully!', response.valueOf);
-          // Optionally, you can navigate to another page or display a success message here.
+          this.router.navigate(['/paintings'])
         },
         (error) => {
           console.error('Error submitting painting:', error);
