@@ -8,7 +8,9 @@ import { PaintingsRoutingModule } from './paintings/paintings-routing.module';
 import { PaintingDetailsComponent } from './paintings/painting-details/painting-details.component';
 import { AddPaintingComponent } from './paintings/add-painting/add-painting.component';
 import { RegisterComponent } from './register/register.component';
-// import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './login/login.component';
+
+
 
 
 // import { BooksComponent } from '../';
@@ -23,7 +25,8 @@ export const routes: Routes = [
   { path: 'paintings/:paintingId', component: PaintingDetailsComponent }, 
   {path: 'add', component: AddPaintingComponent},
   {path: 'auth/register', component: RegisterComponent},
-  // {path: 'auth/login', component: LoginComponent}
+  {path: 'auth/login', component: LoginComponent}
+
  
   // { path: 'user/:id', component: UserDetailsComponent }
   // {path: 'user/:id/:username', component: UserProfileComponent}
