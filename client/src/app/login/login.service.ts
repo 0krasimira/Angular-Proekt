@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../types/user';
 import { environment } from '../environment/environment.development';
+import { AuthService } from '../auth.service';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +12,14 @@ import { environment } from '../environment/environment.development';
 export class LoginService {
   
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   login(email: string, password: string): Observable<any> {
-    const {apiUrl} = environment
-    return this.http.post<User>(`${apiUrl}/auth/login`, { email, password });
+    const { apiUrl } = environment;
+    return this.http.post<User>(`${apiUrl}/auth/login`, { email, password }).pipe(
+      tap(() => {
+        this.authService.updateAuthStatus(true);
+      })
+    );
   }
 }

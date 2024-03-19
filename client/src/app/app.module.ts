@@ -16,6 +16,7 @@ import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { AddPaintingComponent } from './paintings/add-painting/add-painting.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
 
 
 
@@ -43,7 +44,7 @@ import { HttpClientModule } from '@angular/common/http';*/
     ReactiveFormsModule,
     
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent], 
   exports: [FooterComponent, ]
 })
