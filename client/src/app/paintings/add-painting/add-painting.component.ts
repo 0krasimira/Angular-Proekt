@@ -28,7 +28,6 @@ export class AddPaintingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // You can also create the form here if you prefer.
   }
 
   onSubmit() {
@@ -43,7 +42,6 @@ export class AddPaintingComponent implements OnInit {
         },
         (error) => {
           console.error('Error submitting painting:', error);
-          // Handle error, display error message, etc.
         }
       );
     }
