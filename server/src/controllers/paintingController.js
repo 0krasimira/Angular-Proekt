@@ -1,12 +1,21 @@
 const router = require("express").Router()
 const paintingManager = require("../managers/paintingManager")
+const { isAuth } = require("../middlewares/authMiddleware")
 const getErrorMessage = require('../utils/errorUtils')
 
-router.use((req, res,next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:4200')
+router.use((req, res, next) => {
+
+    
+    res.header('Access-Control-Allow-Origin', 'http://localhost:4200'),
+    res.header('Access-Control-Allow-Methods', '*'),
+    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+
+//     res.setHeader("Access-Control-Allow-Origin", "*");
+// res.setHeader("Access-Control-Allow-Credentials", "true");
+// res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+
     next()
 })
-
 
 router.get('/paintings', async (req, res) => {
     try {
@@ -22,7 +31,7 @@ router.get('/paintings/:paintingId', async (req, res) => {
     const paintingId = req.params.paintingId;
     console.log('Requested painting ID:', paintingId);
     try {
-        const onePainting = await paintingManager.getOne(paintingId); 
+        const onePainting = await paintingManager.getOneWithDetails(paintingId); 
         console.log(onePainting);
         if (!onePainting) {
             return res.status(404).json({ message: 'Painting not found' });
@@ -35,6 +44,7 @@ router.get('/paintings/:paintingId', async (req, res) => {
 });
 
 
+
 router.post('/add', async (req,res) =>{
     const painting = req.body
     try {
@@ -45,7 +55,6 @@ router.post('/add', async (req,res) =>{
         console.log(err.message)
     }
 })
-
 
 
 

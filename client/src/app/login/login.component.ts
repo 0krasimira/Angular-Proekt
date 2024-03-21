@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +12,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) { }
+  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
+  constructor(private formBuilder: FormBuilder,  private AuthService: AuthService, private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -34,7 +37,16 @@ export class LoginComponent implements OnInit {
       (response) => {
         console.log(response);
         console.log('User logged in successfully!', response.valueOf());
-        this.router.navigate(['home']);
+        const token = localStorage.setItem(response?.token, "auth")
+        //set user email
+        const email = this.AuthService.setUserEmail(this.loginForm.value.email);
+        this.AuthService.userEmail$.subscribe(email => {
+          console.log(email); // Log the user's email
+        });
+        // Call updateAuthStatus with isLoggedIn set to true
+        this.AuthService.updateAuthStatus(true);
+        // Redirect to home after successful login
+        this.router.navigate(['add']);
       },
       (error) => {
         console.error('Error submitting user:', error);

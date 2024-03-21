@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddPaintingService } from './add-painting.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-add-painting',
@@ -14,7 +15,8 @@ export class AddPaintingComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private addPaintingService: AddPaintingService, 
-    private router: Router
+    private router: Router,
+    private authService: AuthService // Inject the AuthService
   ) {
     this.paintingForm = this.fb.group({
       title: ['', Validators.required],
@@ -23,22 +25,28 @@ export class AddPaintingComponent implements OnInit {
       description: ['', Validators.required],
       imageUrl: ['', Validators.required],
       price: ['', Validators.required],
-      author: ['', Validators.required]
+      author: ['', Validators.required] // Assuming author is required
     });
   }
 
   ngOnInit(): void {
+    // Fetch the user's email from AuthService and set it as the author
+    this.authService.getUserEmail().subscribe(email => {
+      console.log(email)
+      if (email) {
+        this.paintingForm.patchValue({ author: email });
+      }
+    });
   }
 
   onSubmit() {
     if (this.paintingForm.valid) {
-      console.log(this.paintingForm.value)
+      console.log(this.paintingForm.value);
       this.addPaintingService.submitPainting(this.paintingForm.value).subscribe(
-  
         (response) => {
-          console.log(response)
+          console.log(response);
           console.log('Painting submitted successfully!', response.valueOf);
-          this.router.navigate(['/paintings'])
+          this.router.navigate(['/paintings']);
         },
         (error) => {
           console.error('Error submitting painting:', error);
@@ -47,3 +55,5 @@ export class AddPaintingComponent implements OnInit {
     }
   }
 }
+
+//router.post na add

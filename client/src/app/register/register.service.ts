@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 import { ApiService } from '../api.service';
 import { environment } from '../environment/environment.development';
 import { User } from '../types/user';
-import { AuthService } from '../auth.service';
-import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +11,10 @@ import { tap } from 'rxjs/operators';
 export class RegisterService {
   
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient) {}
 
   registerUser(userData: any): Observable<any> {
-    const { apiUrl } = environment;
-    return this.http.post<User>(`${apiUrl}/auth/register`, userData).pipe(
-      tap(() => {
-        this.authService.updateAuthStatus(true);
-      })
-    );
+    const {apiUrl} = environment
+    return this.http.post<User>(`${apiUrl}/auth/register`, userData);
   }
 }

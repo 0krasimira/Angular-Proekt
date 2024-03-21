@@ -18,7 +18,7 @@ try{
     next()
 }catch{
     res.clearCookie("auth");
-    res.redirect("/auth/login")
+
 }
     
 }
@@ -27,7 +27,7 @@ try{
 
 exports.isAuth = (req, res, next) => {
     if (!req.user) {
-       return res.redirect('/auth/login')
+       return 
     }
 
     next()
@@ -41,8 +41,8 @@ exports.isGuest = (req, res, next) => {
     next()
 }
 
-exports.aisOwner = async (req, res, next) => {
-    const electronic = await electronicManager.getOne
+// exports.isOwner = async (req, res, next) => {
+//     const painting = await paintingManager.getOne
 
-    next()
-}
+//     next()
+// }

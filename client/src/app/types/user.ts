@@ -5,7 +5,7 @@ export interface User {
   paintings: Painting[];
   _id: string;
   email: string;
-  username: string;
+  token: string;
   password: string;
 
 }

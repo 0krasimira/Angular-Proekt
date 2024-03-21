@@ -4,6 +4,7 @@ import { PaintingsListComponent } from './paintings-list/paintings-list.componen
 import { PaintingDetailsComponent } from './painting-details/painting-details.component';
 import { RouterModule } from '@angular/router';
 import { AddPaintingComponent } from './add-painting/add-painting.component';
+import { AuthService } from '../auth.service';
 
 
 
@@ -23,6 +24,8 @@ import { AddPaintingComponent } from './add-painting/add-painting.component';
     PaintingsListComponent,
     PaintingDetailsComponent,
     
-  ]
+  ],
+
+  providers: [AuthService]
 })
 export class PaintingsModule { }

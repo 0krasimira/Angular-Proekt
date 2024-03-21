@@ -11,7 +11,7 @@ exports.create = (paintingData) => Painting.create(paintingData)
 
 // exports.create = (userId, paintingData) => {
 //     const createdPainting = Painting.create({
-//         owner: userId,
+//         author: userId,
 //         ...paintingData
 //     })
 

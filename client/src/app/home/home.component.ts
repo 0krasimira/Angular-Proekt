@@ -1,6 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,26 +6,19 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  isLoggedIn = false;
+  isLoggedIn = false
   features!: NodeListOf<HTMLDivElement>;
   currentFeatureIndex: number = 0;
   intervalId: any;
-  private authSubscription: Subscription | undefined;
-
-  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.features = document.querySelectorAll('.feature');
     this.showFeature(this.currentFeatureIndex);
     this.intervalId = setInterval(() => this.nextFeature(), 3000);
-    this.authSubscription = this.authService.getAuthStatus().subscribe((loggedIn) => {
-      this.isLoggedIn = loggedIn;
-    });
   }
 
   ngOnDestroy(): void {
     clearInterval(this.intervalId);
-    this.authSubscription?.unsubscribe();
   }
 
   showFeature(index: number): void {
@@ -45,4 +36,3 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.showFeature(this.currentFeatureIndex);
   }
 }
-

@@ -1,7 +1,9 @@
+import { User } from "./user";
+
 export interface Painting {
     
     title: string,
-    author: string,
+    author: User,
     year: number,
     technique: string,
     price: number,

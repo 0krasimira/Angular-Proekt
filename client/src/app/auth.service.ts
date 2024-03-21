@@ -6,6 +6,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AuthService {
   private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private userEmailSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+  userEmail$: Observable<string | null> = this.userEmailSubject.asObservable();
 
   constructor() { }
 
@@ -15,5 +17,15 @@ export class AuthService {
 
   getAuthStatus(): Observable<boolean> {
     return this.isLoggedInSubject.asObservable();
+  }
+
+  setUserEmail(email: string | null): void {
+    console.log('Setting user email:', email); // Add logging statement
+    this.userEmailSubject.next(email);
+  }
+
+  getUserEmail(): Observable<string | null> {
+    console.log('Getting user email:', this.userEmailSubject.getValue()); // Add logging statement
+    return this.userEmail$;
   }
 }
