@@ -42,12 +42,11 @@ import { HttpClientModule } from '@angular/common/http';*/
     AppRoutingModule,
     HttpClientModule, 
     ReactiveFormsModule,
-    
+    PaintingsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent], 
   exports: [FooterComponent, ]
 })
 export class AppModule { }
-
 

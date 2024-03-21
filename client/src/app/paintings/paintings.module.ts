@@ -12,9 +12,6 @@ import { AuthService } from '../auth.service';
   declarations: [
     PaintingsListComponent,
     PaintingDetailsComponent,
-    
-    
-    
   ],
   imports: [
     CommonModule, 

@@ -1,14 +1,26 @@
 import { Painting } from './painting';
 
+
+
 export interface User {
   
-  paintings: Painting[];
+  paintings?: Painting[]
   _id: string;
   email: string;
-  token: string;
   password: string;
 
 }
+
+export interface UserForAuth extends User {
+ 
+  _id: string;
+  email: string;
+  password: string;
+  token: string;
+  paintings?: Painting[]
+}
+
+
 
 // export interface UserForAuth {
 //   firstName: string;

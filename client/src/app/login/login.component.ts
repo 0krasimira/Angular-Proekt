@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { UserForAuth } from '../types/user';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,16 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
-  constructor(private formBuilder: FormBuilder,  private AuthService: AuthService, private loginService: LoginService, private router: Router) { }
+  isLoggedIn$: Observable<boolean>;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private loginService: LoginService,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.isLoggedIn$ = this.authService.isLoggedIn$;
+  }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -23,7 +31,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // Convenience getter for easy access to form fields
   get formControls() {
     return this.loginForm.controls;
   }
@@ -32,25 +39,40 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    console.log('Login successful!', this.loginForm.value);
-    this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
-      (response) => {
-        console.log(response);
-        console.log('User logged in successfully!', response.valueOf());
-        const token = localStorage.setItem(response?.token, "auth")
-        //set user email
-        const email = this.AuthService.setUserEmail(this.loginForm.value.email);
-        this.AuthService.userEmail$.subscribe(email => {
-          console.log(email); // Log the user's email
-        });
-        // Call updateAuthStatus with isLoggedIn set to true
-        this.AuthService.updateAuthStatus(true);
-        // Redirect to home after successful login
-        this.router.navigate(['add']);
-      },
-      (error) => {
-        console.error('Error submitting user:', error);
-      }
-    );
+  
+    this.loginService.login(this.loginForm.value.email, this.loginForm.value.password)
+      .subscribe(
+        (response) => {
+          const token = response?.token;
+  
+          // Set user email in AuthService
+          this.authService.setUserEmail(this.loginForm.value.email);
+  
+          // Extract user ID from token and set it in AuthService
+          const userId = this.authService.getUserIdFromToken(token);
+          if (userId) { // Check if userId is not null
+            // Set the user object in AuthService
+            const user: UserForAuth = {
+              _id: userId,
+              email: this.loginForm.value.email,
+              password: '', // You might not need to set this
+              token: token || '' // Ensure token is not null
+            };
+            this.authService.setUser(user);
+  
+            // Update authentication status
+            this.authService.updateAuthStatus(true);
+  
+            // Redirect after successful login
+            this.router.navigate(['add']);
+          } else {
+            console.error('Error: Unable to extract user ID from token');
+          }
+        },
+        (error) => {
+          console.error('Error submitting user:', error);
+        }
+      );
   }
+  
 }

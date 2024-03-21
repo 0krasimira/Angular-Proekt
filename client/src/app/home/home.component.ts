@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.features = document.querySelectorAll('.feature');
     this.showFeature(this.currentFeatureIndex);
     this.intervalId = setInterval(() => this.nextFeature(), 3000);
+    
   }
 
   ngOnDestroy(): void {

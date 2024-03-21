@@ -30,14 +30,17 @@ export class AddPaintingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Fetch the user's email from AuthService and set it as the author
-    this.authService.getUserEmail().subscribe(email => {
-      console.log(email)
-      if (email) {
-        this.paintingForm.patchValue({ author: email });
+    this.authService.user$.subscribe(user => {
+      console.log(user)
+      if (user) {
+        // Do something with the user object
+        console.log('User:', user);
       }
     });
   }
+  
+
+ 
 
   onSubmit() {
     if (this.paintingForm.valid) {
