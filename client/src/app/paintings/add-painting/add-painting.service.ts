@@ -13,16 +13,12 @@ export class AddPaintingService {
   submitPainting(paintingData: Painting) {
     const { apiUrl } = environment;
     
-    // Get the token from where it's stored in your Angular application
-    const token = localStorage.getItem('token'); // Assuming you store the token in localStorage
-
-    // Prepare the HTTP headers
+    const token = localStorage.getItem('token'); 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
 
-    // Make the HTTP request with the headers
     return this.http.post<Painting>(`${apiUrl}/add`, paintingData, { headers });
   }
 }

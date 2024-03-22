@@ -6,13 +6,13 @@
   <a routerLink="/contacts">Contact us</a>
   <a routerLink="/add">Add painting</a>
 
-  <!-- Conditionally render navigation links based on authentication status -->
-  <ng-container *ngIf="isLoggedIn; else notLoggedIn">
-    <!-- Display links for authenticated users -->
+  <!-- render navigation links based on authentication status -->
+  <ng-container *ngIf="isLoggedIn$ | async; else notLoggedIn">
+    <!-- links for authenticated users -->
     <a routerLink="/logout">Logout</a>
   </ng-container>
   <ng-template #notLoggedIn>
-    <!-- Display links for non-authenticated users -->
+    <!-- links for non-authenticated users -->
     <a routerLink="/auth/register">Register</a>
     <a routerLink="/auth/login">Login</a>
   </ng-template>

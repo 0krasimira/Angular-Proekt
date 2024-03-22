@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
@@ -7,14 +8,14 @@ import { AuthService } from 'src/app/auth.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  isLoggedIn: boolean = false;
+  isLoggedIn$: Observable<boolean>;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+    // Initialize isLoggedIn$ in the constructor
+    this.isLoggedIn$ = this.authService.isLoggedIn$;
+  }
 
   ngOnInit(): void {
-    // Subscribe to isLoggedIn$ observable to get updates on authentication status
-    this.authService.isLoggedIn$.subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn;
-    });
   }
 }
+
