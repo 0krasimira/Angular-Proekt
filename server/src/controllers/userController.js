@@ -4,6 +4,7 @@ const userManager = require('../managers/userManager')
 const { isGuest, isAuth } = require('../middlewares/authMiddleware')
 const User = require("../models/User")
 const paintingManager = require('../managers/paintingManager')
+const { ok } = require("assert")
 
 
 
@@ -41,9 +42,8 @@ router.post('/login', isGuest, async (req, res) => {
 });
 
 router.get('/logout', isAuth, (req, res) => {
-    res.clearCookie('auth')
-    // res.redirect('/')
-})
+    res.status(200).clearCookie('token').send();
+});
 
 // router.get('/:userId', async (req, res) => {
 //     const userId = req.params.userId;

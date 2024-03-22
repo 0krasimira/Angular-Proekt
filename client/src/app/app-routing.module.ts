@@ -9,6 +9,7 @@ import { PaintingDetailsComponent } from './paintings/painting-details/painting-
 import { AddPaintingComponent } from './paintings/add-painting/add-painting.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 
@@ -25,24 +26,9 @@ export const routes: Routes = [
   { path: 'paintings/:paintingId', component: PaintingDetailsComponent }, 
   {path: 'add', component: AddPaintingComponent},
   {path: 'auth/register', component: RegisterComponent},
-  {path: 'auth/login', component: LoginComponent}
+  {path: 'auth/login', component: LoginComponent},
+  {path: 'auth/logout', component: LogoutComponent}
 
- 
-  // { path: 'user/:id', component: UserDetailsComponent }
-  // {path: 'user/:id/:username', component: UserProfileComponent}
-  //{ path: '**', component: PageNotFoundComponent } - add page not found component
-  // TODO: add all routes
-  /*Create nested routing by defining child routes using the
-children property of a route
-▪ New router outlet needed at UsersComponent
-Setting Up Child (Nested) Routes
-{
- path: 'users', component: UsersComponent, children: [
- { path: ':id', component: UserComponent },
- { path: ':id/details', component: UserDetailsComponent }
- ]
-}
-<router-outlet></router-outlet>*/
 ];
 
 @NgModule({

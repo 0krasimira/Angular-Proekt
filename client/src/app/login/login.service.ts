@@ -13,17 +13,17 @@ export class LoginService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  login(email: string, password: string): Observable<UserForAuth> { // Change the return type to Observable<UserForAuth>
+  login(email: string, password: string): Observable<UserForAuth> { 
     const { apiUrl } = environment;
-    return this.http.post<UserForAuth>(`${apiUrl}/auth/login`, { email, password }).pipe( // Update the return type and expected response type
+    return this.http.post<UserForAuth>(`${apiUrl}/auth/login`, { email, password }).pipe( 
       tap(response => {
         if (response && response.token) {
           // Update the authentication status
           this.authService.updateAuthStatus(true);
           // Set the user in the AuthService
-          this.authService.setUser(response); // Assuming the entire response object contains user details
+          this.authService.setUser(response); 
         } else {
-          // Handle the case when either token or user is missing
+          // if user or token are missing
           throw new Error('Invalid login response');
         }
       })

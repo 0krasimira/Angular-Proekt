@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { TokenInterceptor } from './tokenInterceptor';
+import { LogoutComponent } from './logout/logout.component';
 
 
 
@@ -37,7 +38,7 @@ import { HttpClientModule } from '@angular/common/http';*/
     HomeComponent,
     NavigationComponent, 
     FooterComponent, 
-    AddPaintingComponent, RegisterComponent, LoginComponent , 
+    AddPaintingComponent, RegisterComponent, LoginComponent, LogoutComponent , 
   ],
   imports: [
     BrowserModule,
