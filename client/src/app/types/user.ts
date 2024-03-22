@@ -8,7 +8,7 @@ export interface User {
   _id: string;
   email: string;
   password: string;
-
+  token: string;
 }
 
 export interface UserForAuth extends User {

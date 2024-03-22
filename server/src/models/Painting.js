@@ -30,14 +30,14 @@ const paintingSchema = new mongoose.Schema({
     //     type: mongoose.Types.ObjectId,
     //     ref: "Cast"
     // }],
-    // author: {
-    //     type: mongoose.Types.ObjectId,
-    //     ref: "User"
-    // },
     author: {
-        type: String, 
-        // required: true
+        type: mongoose.Types.ObjectId,
+        ref: "User"
     },
+    // author: {
+    //     type: String, 
+    //     // required: true
+    // },
     
 })
 

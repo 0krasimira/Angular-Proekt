@@ -1,9 +1,11 @@
 const jwt = require("../lib/jwt")
 const { SECRET } = require("../config/config")
+const User = require("../models/User")
+
 
 exports.auth = async (req, res, next) => {
     // get token
-    const token = req.cookies["auth"]
+    const token = req.cookies["token"]
     
     if(!token){
         return next()
@@ -17,21 +19,43 @@ try{
     res.locals.user = decodedToken
     next()
 }catch{
-    res.clearCookie("auth");
+    res.clearCookie("token");
 
 }
     
 }
 
-//check if the user is authorized
 
-exports.isAuth = (req, res, next) => {
-    if (!req.user) {
-       return 
+
+exports.isAuth = async (req, res, next) => {
+    try {
+        // Extract token from Authorization header if present
+        const token = req.header('Authorization') ? req.header('Authorization').replace('Bearer ', '') : null;
+        if (!token) {
+            throw new Error('Token not provided');
+        }
+
+        // Verify token
+        const decoded = await jwt.verify(token, SECRET);
+        const userId = decoded._id; // Extract user ID from decoded token
+
+        // Find the user in the database
+        const user = await User.findById(userId);
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        req.token = token;
+        req.user = user;
+        console.log(user)
+        next();
+    } catch (error) {
+        res.status(401).send({ error: 'Unauthorized' });
     }
+};
 
-    next()
-}
+
+
 
 exports.isGuest = (req, res, next) => {
     if (req.user) {

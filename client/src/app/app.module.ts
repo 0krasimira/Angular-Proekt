@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { AddPaintingComponent } from './paintings/add-painting/add-painting.comp
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
+import { TokenInterceptor } from './tokenInterceptor';
 
 
 
@@ -42,9 +44,13 @@ import { HttpClientModule } from '@angular/common/http';*/
     AppRoutingModule,
     HttpClientModule, 
     ReactiveFormsModule,
-    PaintingsModule
+    PaintingsModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true, // This is important to allow multiple interceptors
+  }] ,
   bootstrap: [AppComponent], 
   exports: [FooterComponent, ]
 })

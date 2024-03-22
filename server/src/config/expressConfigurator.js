@@ -9,7 +9,7 @@ function expressConfigurator(app){
     app.use(express.static(path.resolve(__dirname, "../public")))
     app.use(express.urlencoded({extended: false}))
     app.use(cookieParser())
-    // app.use(auth)
+    app.use(auth)
 }    
 
 module.exports = expressConfigurator

@@ -21,7 +21,7 @@ export class AuthService {
   // Method to set user object
   setUser(user: UserForAuth): void {
     console.log(`setting user: ${JSON.stringify(user)}`)
-    this.userSubject.next((user)); // Fix: Use userSubject to emit user object
+    this.userSubject.next(user); // Fix: Use userSubject to emit user object
   }
 
   updateAuthStatus(isLoggedIn: boolean): void {

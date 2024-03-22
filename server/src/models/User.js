@@ -13,6 +13,11 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Password is required'],
         minLength: [4, "Your password should be at least 4 characters. Please, enter a valid password."]
     },
+
+    createdPaintings: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Paitning'
+    }],
 });
 
 userSchema.pre('save', async function(){

@@ -1,16 +1,19 @@
 <div class="topnav">
-    <a class="active" href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/paintings">All paintings</a>
-    <a href="/search-painting">Search</a>
-    <a href="/contacts">Contact us</a>
-    <a href="/add">Add painting</a>
-    <div *ngIf="!isLoggedIn" >
-      <a href="auth/register">Register</a>
-      <a href="auth/login">Login</a>
-    </div>
-    <div *ngIf="isLoggedIn" >
-      <a href="/logout">Logout</a>
-    </div>
-    
-  </div>
+  <a class="active" routerLink="/">Home</a>
+  <a routerLink="/about">About</a>
+  <a routerLink="/paintings">All paintings</a>
+  <!-- <a routerLink="/search-painting">Search</a> -->
+  <a routerLink="/contacts">Contact us</a>
+  <a routerLink="/add">Add painting</a>
+
+  <!-- Conditionally render navigation links based on authentication status -->
+  <ng-container *ngIf="isLoggedIn; else notLoggedIn">
+    <!-- Display links for authenticated users -->
+    <a routerLink="/logout">Logout</a>
+  </ng-container>
+  <ng-template #notLoggedIn>
+    <!-- Display links for non-authenticated users -->
+    <a routerLink="/auth/register">Register</a>
+    <a routerLink="/auth/login">Login</a>
+  </ng-template>
+</div>

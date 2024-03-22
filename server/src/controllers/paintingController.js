@@ -1,6 +1,6 @@
 const router = require("express").Router()
 const paintingManager = require("../managers/paintingManager")
-const { isAuth } = require("../middlewares/authMiddleware")
+const { isAuth, auth } = require("../middlewares/authMiddleware")
 const getErrorMessage = require('../utils/errorUtils')
 
 router.use((req, res, next) => {
@@ -8,7 +8,9 @@ router.use((req, res, next) => {
     
     res.header('Access-Control-Allow-Origin', 'http://localhost:4200'),
     res.header('Access-Control-Allow-Methods', '*'),
-    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+    res.setHeader("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
+
+
 
 //     res.setHeader("Access-Control-Allow-Origin", "*");
 // res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -16,6 +18,9 @@ router.use((req, res, next) => {
 
     next()
 })
+
+
+
 
 router.get('/paintings', async (req, res) => {
     try {
@@ -44,19 +49,38 @@ router.get('/paintings/:paintingId', async (req, res) => {
 });
 
 
+// router.post('/add', isAuth, async (req,res) =>{
 
-router.post('/add', async (req,res) =>{
-    const painting = req.body
-    try {
-        const newPainting = await paintingManager.create(painting);
-        res.json(newPainting)
-    } catch (err) {
-        // const message = getErrorMessage(err)
-        console.log(err.message)
-    }
+//   const painting = req.body
+//   try {
+//       const newPainting = await paintingManager.create(req.user._id, painting);
+//       res.json(newPainting)
+//   } catch (err) {
+//       // const message = getErrorMessage(err)
+//       console.log(err.message)
+//   }
+// })
+
+router.get('/add', isAuth, async (req, res) => {
+    res.status(405).json({ error: 'GET method not allowed for this endpoint - add' });
 })
 
 
+
+
+router.post('/add', isAuth, async (req, res) => {
+    // Extract painting data from the request body
+    const paintingData = req.body;
+
+    try {
+        // Create a new painting document with the author set to the _id of the authenticated user
+        const newPainting = await paintingManager.create(req.user._id, paintingData);
+        res.json(newPainting);
+    } catch (error) {
+        console.error('Error creating painting:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 
 
