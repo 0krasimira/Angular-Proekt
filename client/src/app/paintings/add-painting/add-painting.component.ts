@@ -36,9 +36,8 @@ export class AddPaintingComponent implements OnInit {
       next: (user) => {
         console.log('User from AuthService:', user);
         if (user) {
-          // Do something with the user object
           console.log('User:', user);
-          // Now you can proceed with setting the author field and submitting the painting
+          // setting the author field and submitting the painting
           this.authorEmail = user.email;
           this.paintingForm.get('author')?.setValue(this.authorEmail); // Update author field
         }

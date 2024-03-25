@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+  
   isLoggedIn$!: Observable<boolean>;
 
   constructor(private authService: AuthService, private router: Router) {}

@@ -1,4 +1,5 @@
-<html>
+
+<html lang="en">
 <body>
   <div class="painting-details" *ngIf="painting">
     <div class="painting-image-container">
@@ -11,7 +12,7 @@
       <li><strong>Description:</strong> {{ painting.description }}</li>
       <li><strong>Price:</strong> {{ painting.price }}</li>
       <li class="author" *ngIf="painting?.author">
-        <strong>Author:</strong> {{ painting.author }} 
+        <strong>Author:</strong> {{ painting.author.email }} 
       </li>
     </ul>
     <div class="buttons">
@@ -21,6 +22,9 @@
       
       <button class="profile-btn">Go to artist's profile</button>
       
+      <!-- New buttons for Edit and Delete -->
+      <button class="edit-btn">Edit</button>
+      <button class="delete-btn">Delete</button>
     </div>
   </div>
   <div class="loading" *ngIf="!painting">
@@ -28,3 +32,6 @@
   </div>
 </body>
 </html>
+
+
+/* IMPLEMENT EDIT AND DELETE FUNCTIONALITIES ADD PROFILE AND SEARCH IF POSSIBLE*/

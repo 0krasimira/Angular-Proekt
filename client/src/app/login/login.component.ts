@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
         },
         (error) => {
           console.error('Error submitting user. Please try again', error);
-          this.errorMessage = 'Error submitting user: ' + error.message; // Set errorMessage
+          this.errorMessage = 'Error submitting user: Please try again.'; // Set errorMessage
         }
       );
   }
