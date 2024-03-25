@@ -13,7 +13,7 @@
   text-decoration: none;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 25px;
-  cursor: pointer; /* Add cursor property here */
+  cursor: pointer; 
 }
 
 /* Change the color of links on hover */

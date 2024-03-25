@@ -85,4 +85,13 @@ html {
 }
 
 
- 
+.no-paintings-message {
+    font-family: Arial, sans-serif; /* Set font family to Arial */
+    font-size: 50px; /* Increase font size */
+    color: #ff6347; /* Add color */
+    text-align: center; /* Center align the text */
+    margin-top: 100px; /* Add margin to push it lower on the screen */
+    font-style: italic; /* Make the font italic */
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); /* Add a shining effect */
+}
+

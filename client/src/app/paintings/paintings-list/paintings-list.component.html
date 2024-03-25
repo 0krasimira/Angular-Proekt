@@ -1,8 +1,12 @@
-<html>
-    <body>
-        <section class="section">
-            <div class="paintings-container">
-                <div *ngFor="let painting of paintings" class="painting-container">
+<!DOCTYPE html>
+<html lang="en">
+
+
+<body>
+    <section class="paintings-section">
+        <div class="paintings-container">
+            <ng-container *ngIf="paintings.length > 0; else noPaintings">
+                <div *ngFor="let painting of paintings" class="painting-card">
                     <div class="painting">
                         <h2>{{painting.title}}</h2>
                         <p><strong>Price:</strong> ${{painting.price}}</p>
@@ -11,14 +15,14 @@
                     </div>
                     <a [routerLink]="['/paintings', painting._id]">
                         <button class="details-btn">Details</button>
-                      </a>
-                      
-
-
+                    </a>
                 </div>
-            </div>
-        </section>
-        
-    </body>
-</html>
+            </ng-container>
+            <ng-template #noPaintings>
+                <p class="no-paintings-message">There are no paintings yet.</p>
+            </ng-template>
+        </div>
+    </section>
+</body>
 
+</html>
