@@ -1,5 +1,11 @@
 <div class="background-container">
   <div class="container">
+    <!-- Login message -->
+    <div *ngIf="showLoginMessage" class="login-message">
+      <p>Please log, in to add a painting.</p>
+    </div>
+
+    <!-- Your existing login form goes here -->
     <div class="form-container">
       <div class="form-header">
         <h2 class="form-title">Login</h2>
@@ -33,5 +39,3 @@
     </div>
   </div>
 </div>
-
-  

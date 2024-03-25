@@ -1,4 +1,3 @@
-/* Style for the background container */
 .background-container {
     background-image: url('https://i.pinimg.com/564x/00/63/87/0063870975bad04fc68f15e7f1db9521.jpg'); 
     background-size: cover; 
@@ -9,23 +8,42 @@
     align-items: center;
   }
   
-
-  .form-container {
-    width: 400px;
-    padding: 40px;
-    background-color: rgba(255, 255, 255, 0.8); 
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-  
+  /* Style for the container */
   .container {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column; /* Center-align child elements vertically */
     min-height: 100vh;
     background-color: #a164daa3;
+    position: relative; /* Position the message and form relative to this container */
   }
-
+  
+  /* Style for the login message */
+  .login-message {
+    position: absolute; /* Position the message absolutely */
+    top: 20px; /* Adjust the top position */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif; /* Set font family */
+    color: #fff; /* Set text color */
+    font-size: 28px;
+    font-style: italic;
+  }
+  /* Style for the form container */
+  .form-container {
+    width: 400px;
+    padding: 40px;
+    background-color: #bda7e3a3;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative; 
+    font-family: Arial, Helvetica, sans-serif;
+    top: -50px; 
+  }
+  
   /* Style for form groups */
   .form-group {
     margin-bottom: 20px;
@@ -52,16 +70,6 @@
   .text-danger {
     color: #dc3545;
     font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  /* Style for error message section */
-  .error-message {
-    margin-bottom: 15px;
-    padding: 10px;
-    background-color: #dc3545;
-    color: #fff;
-    border-radius: 5px;
     font-family: Arial, Helvetica, sans-serif;
   }
   

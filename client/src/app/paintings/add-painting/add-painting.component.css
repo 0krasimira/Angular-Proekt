@@ -1,0 +1,56 @@
+/* Style the container */
+.container {
+    max-width: 600px; /* Set maximum width */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add padding */
+    background-color: #f7f7f7; /* Set background color */
+    border-radius: 10px; /* Add border radius */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+/* Style the form header */
+.container h2 {
+    font-family: Arial, sans-serif; /* Set font family */
+    color: #333; /* Set text color */
+    text-align: center; /* Center align text */
+    margin-bottom: 20px; /* Add margin bottom */
+}
+
+/* Style the form fields */
+.form-group {
+    margin-bottom: 20px; /* Add margin bottom */
+}
+
+/* Style the labels */
+.form-group label {
+    display: block; /* Display labels as blocks */
+    font-weight: bold; /* Add bold font weight */
+    margin-bottom: 5px; /* Add margin bottom */
+}
+
+/* Style the input fields */
+.form-control {
+    width: 100%; /* Set width to 100% */
+    padding: 10px; /* Add padding */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 5px; /* Add border radius */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+/* Style the submit button */
+.btn-primary {
+    display: block; /* Display as block */
+    width: 100%; /* Set width to 100% */
+    padding: 10px; /* Add padding */
+    background-color: #007bff; /* Set background color */
+    color: #fff; /* Set text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add border radius */
+    cursor: pointer; /* Set cursor to pointer */
+    transition: background-color 0.3s; /* Add transition */
+}
+
+/* Style the submit button on hover */
+.btn-primary:hover {
+    background-color: #0056b3; /* Change background color on hover */
+}

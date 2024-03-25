@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddPaintingService } from './add-painting.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
-import { take, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-painting',
@@ -13,6 +12,7 @@ import { take, filter } from 'rxjs/operators';
 export class AddPaintingComponent implements OnInit {
   paintingForm: FormGroup;
   authorEmail: string = '';
+  
 
   constructor(
     private fb: FormBuilder,
@@ -67,10 +67,10 @@ export class AddPaintingComponent implements OnInit {
           if (error.status === 0) {
             console.error('Connection error: Could not connect to server.');
           }
-          // Log any other relevant error properties here
         }
       );
     }
   }
 }
+
 

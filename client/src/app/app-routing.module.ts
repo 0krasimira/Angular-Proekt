@@ -10,6 +10,7 @@ import { AddPaintingComponent } from './paintings/add-painting/add-painting.comp
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AuthGuardService } from './authGuardService';
 
 
 
@@ -24,7 +25,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: 'paintings', component: PaintingsListComponent},
   { path: 'paintings/:paintingId', component: PaintingDetailsComponent }, 
-  {path: 'add', component: AddPaintingComponent},
+    { path: 'add', component: AddPaintingComponent, canActivate: [AuthGuardService] },
   {path: 'auth/register', component: RegisterComponent},
   {path: 'auth/login', component: LoginComponent},
   {path: 'auth/logout', component: LogoutComponent}

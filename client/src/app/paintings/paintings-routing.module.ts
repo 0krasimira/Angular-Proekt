@@ -4,12 +4,14 @@ import { PaintingsListComponent } from './paintings-list/paintings-list.componen
 import { PaintingDetailsComponent } from './painting-details/painting-details.component';
 import { AddPaintingComponent } from './add-painting/add-painting.component';
 
+import { CanActivateFn } from '@angular/router';
+import { AuthGuardService } from '../authGuardService';
 
 const routes: Routes = [
 
   { path: 'paintings', component: PaintingsListComponent },
   { path: 'paintings/:paintingId', component: PaintingDetailsComponent },
-  {path: 'add', component: AddPaintingComponent}
+  { path: 'add', component: AddPaintingComponent, canActivate: [AuthGuardService]},
   
   
 ];
