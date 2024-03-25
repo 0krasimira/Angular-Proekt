@@ -9,7 +9,7 @@
   <!-- render navigation links based on authentication status -->
   <ng-container *ngIf="isLoggedIn$ | async; else notLoggedIn">
     <!-- links for authenticated users -->
-    <a routerLink="/auth/logout">Logout</a>
+    <a (click)="logout()">Logout</a>
   </ng-container>
   <ng-template #notLoggedIn>
     <!-- links for non-authenticated users -->

@@ -12,6 +12,6 @@ export class LogoutService {
 
   logout(): Observable<any> {
     const {apiUrl} = environment
-    return this.http.get<any>(`${apiUrl}/logout`); 
+    return this.http.get<any>(`${apiUrl}/auth/logout`); 
   }
 }
