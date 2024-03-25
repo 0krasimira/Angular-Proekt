@@ -85,13 +85,35 @@ html {
 }
 
 
+ 
 .no-paintings-message {
-    font-family: Arial, sans-serif; /* Set font family to Arial */
-    font-size: 50px; /* Increase font size */
-    color: #ff6347; /* Add color */
-    text-align: center; /* Center align the text */
-    margin-top: 100px; /* Add margin to push it lower on the screen */
-    font-style: italic; /* Make the font italic */
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); /* Add a shining effect */
+    font-family: Arial, sans-serif; /* Set font family */
+    color: rgb(150, 24, 47); /* Set text color */
+    font-size: 36px; /* Set font size */
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    text-align: center; /* Center-align text */
+    margin-bottom: 20px; /* Add margin to separate from other elements */
+    position: relative; /* Set position relative for absolute positioning of pseudo-element */
+    overflow: hidden; /* Hide overflow for shimmer effect */
 }
 
+.no-paintings-message::after {
+    content: ''; /* Add content for pseudo-element */
+    position: absolute; /* Set position absolute */
+    top: 0; /* Position from the top */
+    left: -100%; /* Initially position outside the visible area */
+    width: 200%; /* Make the width twice as large as the element */
+    height: 100%; /* Set height to match the element's height */
+    background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.5) 50%, transparent 100%); /* Create a gradient for shimmering effect */
+    animation: shimmer 2s infinite; /* Apply animation */
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%; /* Move the gradient outside the visible area */
+    }
+    100% {
+        left: 100%; /* Move the gradient to the right */
+    }
+}

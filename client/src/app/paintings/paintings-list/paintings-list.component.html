@@ -1,28 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-
-
-<body>
-    <section class="paintings-section">
-        <div class="paintings-container">
-            <ng-container *ngIf="paintings.length > 0; else noPaintings">
-                <div *ngFor="let painting of paintings" class="painting-card">
-                    <div class="painting">
-                        <h2>{{painting.title}}</h2>
-                        <p><strong>Price:</strong> ${{painting.price}}</p>
-                        <p><strong>Technique:</strong> {{painting.technique}}</p>
-                        <img [src]="painting.imageUrl" [alt]="painting.title">
+<html>
+    <body>
+        <section class="section">
+            <div class="paintings-container">
+                <!-- Check if there are paintings -->
+                <ng-container *ngIf="paintings.length > 0; else noPaintings">
+                    <div *ngFor="let painting of paintings" class="painting-container">
+                        <div class="painting">
+                            <h2>{{painting.title}}</h2>
+                            <p><strong>Price:</strong> ${{painting.price}}</p>
+                            <p><strong>Technique:</strong> {{painting.technique}}</p>
+                            <img [src]="painting.imageUrl" [alt]="painting.title">
+                        </div>
+                        <a [routerLink]="['/paintings', painting._id]">
+                            <button class="details-btn">Details</button>
+                        </a>
                     </div>
-                    <a [routerLink]="['/paintings', painting._id]">
-                        <button class="details-btn">Details</button>
-                    </a>
-                </div>
-            </ng-container>
-            <ng-template #noPaintings>
-                <p class="no-paintings-message">There are no paintings yet.</p>
-            </ng-template>
-        </div>
-    </section>
-</body>
-
+                </ng-container>
+                <!-- If there are no paintings -->
+                <ng-template #noPaintings>
+                    <div class="no-paintings-message">
+                        There are no paintings yet.
+                    </div>
+                </ng-template>
+            </div>
+        </section>
+    </body>
 </html>
+
+
