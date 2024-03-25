@@ -1,0 +1,103 @@
+/* Style for the background container */
+.background-container {
+    background-image: url('https://i.pinimg.com/564x/00/63/87/0063870975bad04fc68f15e7f1db9521.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    min-height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  .form-container {
+    width: 400px;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #a164daa3;
+  }
+
+  /* Style for form groups */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Style for labels */
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  /* Style for form inputs */
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Style for error messages */
+  .text-danger {
+    color: #dc3545;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Style for error message section */
+  .error-message {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Style for submit button */
+  .btn-primary {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style for form title */
+  .form-title {
+    text-align: center;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Style for form header */
+  .form-header {
+    margin-bottom: 20px;
+  }
+  
+  /* Style for form footer */
+  .form-footer {
+    margin-top: 20px;
+    text-align: center;
+  }
+  

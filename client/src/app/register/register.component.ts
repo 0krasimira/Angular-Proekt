@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup; // Initialize registerForm
+  errorMessage: string = ''; // Initialize errorMessage
 
   constructor(private formBuilder: FormBuilder, private registerService: RegisterService, private router: Router) { }
 
@@ -31,23 +32,18 @@ export class RegisterComponent implements OnInit {
         return;
       }
 
- 
-        if (this.registerForm.valid) {
-          console.log(this.registerForm.value)
-          this.registerService.registerUser(this.registerForm.value).subscribe(
-      
-            (response) => {
-              console.log(response)
-              console.log('user registered successfully!', response.valueOf);
-              this.router.navigate(['auth/login']);
-            },
-            (error) => {
-              console.error('Error submitting user:', error);
-            }
-          );
+      // Register user
+      this.registerService.registerUser(this.registerForm.value).subscribe(
+        (response) => {
+          console.log(response);
+          console.log('user registered successfully!', response.valueOf);
+          this.router.navigate(['auth/login']);
+        },
+        (error) => {
+          console.error('Error submitting user:', error);
+          this.errorMessage = 'Registration unsuccessful, please try again.';
         }
-      
-      ;
+      );
     }
   }
 }

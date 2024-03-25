@@ -14,6 +14,7 @@ import { UserForAuth } from '../types/user';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   isLoggedIn$: Observable<boolean>;
+  errorMessage: string = ''; // Define errorMessage property
 
   constructor(
     private formBuilder: FormBuilder,
@@ -72,8 +73,10 @@ export class LoginComponent implements OnInit {
         },
         (error) => {
           console.error('Error submitting user:', error);
+          this.errorMessage = 'Error submitting user: ' + error.message; // Set errorMessage
         }
       );
   }
   
 }
+

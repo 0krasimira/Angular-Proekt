@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AuthService } from '../auth.service'; // Import your authentication service here
 
 @Component({
   selector: 'app-home',
@@ -6,15 +7,22 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  isLoggedIn = false
+  isLoggedIn = false;
   features!: NodeListOf<HTMLDivElement>;
   currentFeatureIndex: number = 0;
   intervalId: any;
+
+  constructor(private authService: AuthService) { } // Inject AuthService
 
   ngOnInit(): void {
     this.features = document.querySelectorAll('.feature');
     this.showFeature(this.currentFeatureIndex);
     this.intervalId = setInterval(() => this.nextFeature(), 3000);
+
+    // Subscribe to changes in authentication status
+    this.authService.isLoggedIn$.subscribe((loggedIn: boolean) => {
+      this.isLoggedIn = loggedIn;
+    });
   }
 
   ngOnDestroy(): void {
