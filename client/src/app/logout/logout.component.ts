@@ -23,7 +23,7 @@ export class LogoutComponent implements OnInit {
     this.logoutService.logout().subscribe(
       () => {
         // Successful logout, navigate to home or any other desired page
-        this.router.navigate(['/home']);
+        this.router.navigate(['home']);
       },
       (error) => {
         console.error('Error logging out:', error);

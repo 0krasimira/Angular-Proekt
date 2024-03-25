@@ -25,6 +25,7 @@ export class AuthService {
   }
 
   updateAuthStatus(isLoggedIn: boolean): void {
+    console.log('Updating auth status:', isLoggedIn);
     this.isLoggedInSubject.next(isLoggedIn);
   }
 
@@ -68,6 +69,9 @@ export class AuthService {
     // Clear token and userEmail from local storage
     localStorage.removeItem('token');
     localStorage.removeItem('userEmail');
+
+    // Update auth status to indicate the user is logged out
+    this.updateAuthStatus(false);
 
     // Return an observable that completes immediately
     return of(null);
