@@ -35,8 +35,10 @@ export class EditPaintingComponent implements OnInit {
     });
 
     const paintingId = this.route.snapshot.params['paintingId'] || '';
+    //console.log(paintingId) - logged - all good
 
     const authToken = localStorage.getItem('token');
+    // console.log(authToken) - logged - all good
 
     if (!authToken) {
       console.error('Authorization token not found.');
@@ -47,10 +49,11 @@ export class EditPaintingComponent implements OnInit {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${authToken}`
     });
+    
 
     this.editPaintingService.getPaintingById(paintingId, headers).subscribe(
       (painting: Painting) => {
-        console.log('Fetched Painting:', painting);
+        console.log('Fetched painting:', painting);
         this.painting = painting;
         this.patchFormWithPaintingData();
       },
@@ -59,6 +62,7 @@ export class EditPaintingComponent implements OnInit {
         // Handle error if needed
       }
     );
+  
   }
 
   private patchFormWithPaintingData(): void {

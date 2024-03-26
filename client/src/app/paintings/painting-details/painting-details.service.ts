@@ -18,6 +18,12 @@ export class PaintingDetailsService implements OnDestroy {
     this.unsubscribe$.complete();
   }
 
+  getPaintings(){
+    const {apiUrl} = environment
+    return this.http.get<Painting[]>(`${apiUrl}/paintings`)
+  }
+
+
   getPaintingById(id: string): Observable<Painting> {
     return this.http.get<Painting>(`${environment.apiUrl}/paintings/${id}`)
       .pipe(

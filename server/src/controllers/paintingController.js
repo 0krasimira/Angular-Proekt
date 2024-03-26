@@ -32,21 +32,7 @@ router.get('/paintings', async (req, res) => {
     }
 });
 
-router.get('/paintings/:paintingId', async (req, res) => {
-    const paintingId = req.params.paintingId;
-    console.log('Requested painting ID:', paintingId);
-    try {
-        const onePainting = await paintingManager.getOneWithDetails(paintingId);
-        console.log(onePainting);
-        if (!onePainting) {
-            return res.status(404).json({ message: 'Painting not found' });
-        }
-        return res.json(onePainting);
-    } catch (error) {
-        console.error('Error fetching one painting:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
+
 
 
 // router.post('/add', isAuth, async (req,res) =>{
@@ -82,16 +68,34 @@ router.post('/add', isAuth, async (req, res) => {
     }
 });
 
-
-router.get("paintings/:paintingId/edit", isAuth, async (req, res) => {
-    if (!req.user) {
-        return
-    }
+router.get('/paintings/:paintingId', async (req, res) => {
+    const paintingId = req.params.paintingId;
+    // console.log('Requested painting ID:', paintingId);
     try {
-        const painting = await paintingManager.getOneWithDetails(req.params.paintingId).lean()
-        res.json(painting)
+        const onePainting = await paintingManager.getOneWithDetails(paintingId);
+        // console.log(onePainting);
+        if (!onePainting) {
+            return res.status(404).json({ message: 'Painting not found' });
+        }
+        return res.json(onePainting);
+    } catch (error) {
+        console.error('Error fetching one painting:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+router.get("/paintings/:paintingId/edit", isAuth, async (req, res) => {
+    // if (!req.user) {
+    //     return
+    // }
+    try {
+        const paintingId = req.params.paintingId
+        console.log('this is the painting im trying to edit', paintingId)
+        const painting = await paintingManager.getOneWithDetails(paintingId)
+        res.status(200).json(painting)
     } catch (err) {
-        res.status(404)
+        console.error('Error fetching painting:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 })
 
