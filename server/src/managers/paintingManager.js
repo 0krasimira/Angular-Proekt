@@ -11,7 +11,7 @@ exports.getOne = (paintingId) => Painting.findById(paintingId)
 
 exports.getOneWithDetails = (paintingId) => this.getOne(paintingId).populate('author')
 
-// exports.create = (paintingData) => Painting.create(paintingData)
+exports.edit = (paintingId, paintingData) => Painting.findByIdAndUpdate(paintingId, paintingData, { runValidators: true })
 
 exports.create = async (userId, paintingData) => {
     try {

@@ -99,22 +99,42 @@ router.get("/paintings/:paintingId/edit", isAuth, async (req, res) => {
     }
 })
 
-// router.post("/:electronicId/edit", isAuth, async (req, res) => {
-//     const electronic = req.body
-//     const electronicId = req.params.electronicId
+
+router.post('/paintings/:paintingId/edit', isAuth, async (req, res) => {
+    const paintingData = req.body;
+    try {
+      // Update the painting data in your database using paintingId and paintingData
+      // Ensure that the author field is set to the ObjectId of the user who created the painting
+      paintingData.author = req.user._id; // Assuming req.user contains the authenticated user's data
+      const updatedPainting = await paintingManager.edit(req.params.paintingId, paintingData);
+      console.log(updatedPainting)
+      res.status(200).json(updatedPainting);
+    } catch (error) {
+      console.error('Error updating painting:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+// router.post("/paintings/:paintingId/edit", isAuth, async (req, res) => {
+//     const painting = req.body
+//     const paintingId = req.params.paintingId
 
 //     try{
-//         const isOwnerInfo = await electronicManager.getOneWithDetails(electronicId)
-//         const isOwner = isOwnerInfo.owner._id.toString() == req.user?._id
+//         const isOwnerInfo = await paintingManager.getOneWithDetails(paintingId)
+//         console.log('isOwnerInfo', isOwnerInfo)
+//         const isOwner = isOwnerInfo.author._id.toString() == req.user?._id
+//         console.log('isOwner', isOwner)
 //         if(!isOwner){
-//             return res.redirect(`/catalog`)
+//             return res.status(401).json({error})
 //         }
-//         await electronicManager.edit(electronicId, electronic)
-//             res.redirect(`/${req.params.electronicId}/details`)
+//         const editedPainting = await paintingManager.edit(paintingId, painting)
+//         console.log('edited painting: ', editedPainting)
+//         res.json(editedPainting)
+
 
 //     }catch(err){
-//         const message = getErrorMessage(err)
-//         res.status(400).render("electronic/edit", {electronic, error: message})
+//         res.status(400).json({ err });
 //        }
 // })
 

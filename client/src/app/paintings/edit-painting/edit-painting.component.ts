@@ -14,6 +14,7 @@ export class EditPaintingComponent implements OnInit {
 
   editPaintingForm!: FormGroup;
   painting: Painting | undefined;
+  authorEmail: string = ''
 
   constructor(
     private router: Router,
@@ -74,14 +75,17 @@ export class EditPaintingComponent implements OnInit {
       description: this.painting.description,
       imageUrl: this.painting.imageUrl,
       price: this.painting.price,
-      author: this.painting.author
+      author: this.painting.author.email
       });
     }
   }
 
   onSubmit(): void {
     if (this.editPaintingForm.valid && this.painting) {
+      console.log("form validity ", this.editPaintingForm.valid)
+      console.log("this painting", this.painting)
       const updatedPaintingData = this.editPaintingForm.value;
+      console.log("updated Painting data", updatedPaintingData)
       this.editPaintingService.updatePainting(this.painting._id, updatedPaintingData).subscribe(
         (updatedPainting: Painting) => {
           console.log('Painting updated:', updatedPainting);
