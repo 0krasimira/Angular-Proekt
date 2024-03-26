@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { TokenInterceptor } from './tokenInterceptor';
 import { LogoutComponent } from './logout/logout.component';
+import { EditPaintingComponent } from './paintings/edit-painting/edit-painting.component';
 
 
 
@@ -38,7 +39,7 @@ import { HttpClientModule } from '@angular/common/http';*/
     HomeComponent,
     NavigationComponent, 
     FooterComponent, 
-    AddPaintingComponent, RegisterComponent, LoginComponent, LogoutComponent , 
+    AddPaintingComponent, RegisterComponent, LoginComponent, LogoutComponent ,  EditPaintingComponent
   ],
   imports: [
     BrowserModule,
@@ -56,4 +57,3 @@ import { HttpClientModule } from '@angular/common/http';*/
   exports: [FooterComponent, ]
 })
 export class AppModule { }
-

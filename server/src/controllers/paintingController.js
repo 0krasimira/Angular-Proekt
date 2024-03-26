@@ -83,7 +83,7 @@ router.post('/add', isAuth, async (req, res) => {
 });
 
 
-router.get("/:paintingId/edit", isAuth, async (req, res) => {
+router.get("paintings/:paintingId/edit", isAuth, async (req, res) => {
     if (!req.user) {
         return
     }

@@ -5,6 +5,7 @@ import { PaintingDetailsComponent } from './painting-details/painting-details.co
 import { RouterModule } from '@angular/router';
 import { AddPaintingComponent } from './add-painting/add-painting.component';
 import { AuthService } from '../auth.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import { AuthService } from '../auth.service';
   ],
   imports: [
     CommonModule, 
-    RouterModule
+    RouterModule, 
+    ReactiveFormsModule
   ],
   exports: [
     PaintingsListComponent,

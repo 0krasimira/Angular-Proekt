@@ -23,7 +23,10 @@
       <button class="profile-btn">Go to artist's profile</button>
       
       <!-- New buttons for Edit and Delete -->
-      <button class="edit-btn">Edit</button>
+      <a [routerLink]="['/paintings', paintingId, 'edit']">
+        <button class="edit-btn">Edit</button>
+      </a>
+     
       <button class="delete-btn">Delete</button>
     </div>
   </div>
@@ -33,5 +36,7 @@
 </body>
 </html>
 
+
+/* IMPLEMENT EDIT AND DELETE FUNCTIONALITIES ADD PROFILE AND SEARCH IF POSSIBLE*/
 
 /* IMPLEMENT EDIT AND DELETE FUNCTIONALITIES ADD PROFILE AND SEARCH IF POSSIBLE*/

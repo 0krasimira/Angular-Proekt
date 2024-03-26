@@ -27,7 +27,6 @@ export class LogoutComponent implements OnInit {
       },
       (error) => {
         console.error('Error logging out:', error);
-        // Handle error if necessary
       }
     );
   }
