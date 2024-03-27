@@ -53,7 +53,6 @@ router.get('/add', isAuth, async (req, res) => {
 
 
 
-
 router.post('/add', isAuth, async (req, res) => {
     // Extract painting data from the request body
     const paintingData = req.body;
