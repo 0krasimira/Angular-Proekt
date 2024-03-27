@@ -11,9 +11,10 @@
       <li><strong>Technique:</strong> {{ painting.technique }}</li>
       <li><strong>Description:</strong> {{ painting.description }}</li>
       <li><strong>Price:</strong> {{ painting.price }}</li>
-      <li class="author" *ngIf="painting?.author">
+      <li class="author" *ngIf="painting.author">
         <strong>Author:</strong> {{ painting.author.email }} 
       </li>
+      
     </ul>
     <div class="buttons">
       <a [routerLink]="['/paintings']">

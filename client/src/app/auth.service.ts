@@ -24,6 +24,11 @@ export class AuthService {
     this.userSubject.next(user);
   }
 
+  getUser(): Observable<UserForAuth | null> {
+    console.log(`getting user: ${JSON.stringify(this.user$)}`);
+    return this.userSubject.asObservable();
+  }
+
   updateAuthStatus(isLoggedIn: boolean): void {
     console.log('Updating auth status:', isLoggedIn);
     this.isLoggedInSubject.next(isLoggedIn);

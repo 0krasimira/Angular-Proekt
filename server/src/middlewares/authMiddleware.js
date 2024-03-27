@@ -1,6 +1,7 @@
 const jwt = require("../lib/jwt")
 const { SECRET } = require("../config/config")
 const User = require("../models/User")
+const paintingManager = require('../managers/paintingManager')
 
 
 exports.auth = async (req, res, next) => {
@@ -65,8 +66,8 @@ exports.isGuest = (req, res, next) => {
     next()
 }
 
-// exports.isOwner = async (req, res, next) => {
-//     const painting = await paintingManager.getOne
+exports.isOwner = async (req, res, next) => {
+    const painting = await paintingManager.getOne()
 
-//     next()
-// }
+    next()
+}

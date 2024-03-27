@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditPaintingService } from './edit-painting.service';
 import { Painting } from 'src/app/types/painting';
 import { HttpHeaders } from '@angular/common/http';
+import { AuthService } from 'src/app/auth.service'; // Import the AuthService
 
 @Component({
   selector: 'app-edit-painting',
@@ -14,13 +15,15 @@ export class EditPaintingComponent implements OnInit {
 
   editPaintingForm!: FormGroup;
   painting: Painting | undefined;
-  authorEmail: string = ''
+  authorEmail: string = '';
+  currentUserEmail: string | null = null; // Variable to store the current user's email
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private editPaintingService: EditPaintingService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService // Inject the AuthService
   ) {}
 
   ngOnInit(): void {
@@ -36,10 +39,15 @@ export class EditPaintingComponent implements OnInit {
     });
 
     const paintingId = this.route.snapshot.params['paintingId'] || '';
-    //console.log(paintingId) - logged - all good
+
+    // Subscribe to the user$ observable to get the current user's email
+    this.authService.user$.subscribe(user => {
+      if (user) {
+        this.currentUserEmail = user.email;
+      }
+    });
 
     const authToken = localStorage.getItem('token');
-    // console.log(authToken) - logged - all good
 
     if (!authToken) {
       console.error('Authorization token not found.');
@@ -50,42 +58,38 @@ export class EditPaintingComponent implements OnInit {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${authToken}`
     });
-    
 
     this.editPaintingService.getPaintingById(paintingId, headers).subscribe(
       (painting: Painting) => {
         console.log('Fetched painting:', painting);
         this.painting = painting;
         this.patchFormWithPaintingData();
+        this.authorEmail = painting.author.email;
       },
       (error) => {
         console.error('Error fetching painting:', error);
         // Handle error if needed
       }
     );
-  
   }
 
   private patchFormWithPaintingData(): void {
     if (this.painting) {
       this.editPaintingForm.patchValue({
-       title: this.painting.title,
-      year: this.painting.year,
-      technique: this.painting.technique,
-      description: this.painting.description,
-      imageUrl: this.painting.imageUrl,
-      price: this.painting.price,
-      author: this.painting.author.email
+        title: this.painting.title,
+        year: this.painting.year,
+        technique: this.painting.technique,
+        description: this.painting.description,
+        imageUrl: this.painting.imageUrl,
+        price: this.painting.price,
+        author: this.painting.author.email
       });
     }
   }
 
   onSubmit(): void {
-    if (this.editPaintingForm.valid && this.painting) {
-      console.log("form validity ", this.editPaintingForm.valid)
-      console.log("this painting", this.painting)
+    if (this.editPaintingForm.valid && this.painting && this.currentUserEmail === this.painting.author.email) {
       const updatedPaintingData = this.editPaintingForm.value;
-      console.log("updated Painting data", updatedPaintingData)
       this.editPaintingService.updatePainting(this.painting._id, updatedPaintingData).subscribe(
         (updatedPainting: Painting) => {
           console.log('Painting updated:', updatedPainting);
@@ -95,6 +99,9 @@ export class EditPaintingComponent implements OnInit {
           console.error('Error updating painting:', error);
         }
       );
+    } else {
+      console.error('You are not authorized to edit this painting.');
+      // Handle unauthorized access
     }
   }
 }

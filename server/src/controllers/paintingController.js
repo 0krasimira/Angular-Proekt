@@ -1,6 +1,6 @@
 const router = require("express").Router()
 const paintingManager = require("../managers/paintingManager")
-const { isAuth, auth } = require("../middlewares/authMiddleware")
+const { isAuth, auth, isOwner } = require("../middlewares/authMiddleware")
 const getErrorMessage = require('../utils/errorUtils')
 
 router.use((req, res, next) => {
@@ -84,7 +84,7 @@ router.get('/paintings/:paintingId', async (req, res) => {
     }
 });
 
-router.get("/paintings/:paintingId/edit", isAuth, async (req, res) => {
+router.get("/paintings/:paintingId/edit", isAuth, isOwner, async (req, res) => {
     // if (!req.user) {
     //     return
     // }
@@ -100,7 +100,7 @@ router.get("/paintings/:paintingId/edit", isAuth, async (req, res) => {
 })
 
 
-router.post('/paintings/:paintingId/edit', isAuth, async (req, res) => {
+router.post('/paintings/:paintingId/edit', isAuth, isOwner, async (req, res) => {
     const paintingData = req.body;
     try {
       // Update the painting data in your database using paintingId and paintingData
@@ -159,4 +159,4 @@ router.post('/paintings/:paintingId/edit', isAuth, async (req, res) => {
 
 module.exports = router
 
-
+// ISOWNER - ONLY OWNER SHOULD BE ABLE TO EDIT AND DELETE! DO THIS! + DO DELETE + profile, search!

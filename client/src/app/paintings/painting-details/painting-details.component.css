@@ -101,3 +101,28 @@ a, .buttons {
 }
 
 
+/* CSS for the edit and delete buttons */
+.edit-btn, .delete-btn {
+  background-color: #6495ED; /* Cornflower Blue */
+  color: #ffffff; /* White text color */
+  border: none;
+  padding: 20px 40px; /* Increased padding for buttons */
+  font-size: 20px; /* Increased font size */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 30px; /* Make buttons rounder */
+  text-shadow: -2px -2px 0 #57115b,  
+               2px -2px 0 #57115b,  
+              -2px 2px 0 #57115b,  
+               2px 2px 0 #57115b,  
+}
+
+.edit-btn:hover, .delete-btn:hover {
+  background-color: #4169E1; /* Royal Blue */
+  color: #ffffff; /* White text on hover */
+  text-shadow: -2px -2px 0 #000080,  
+               2px -2px 0 #000080,
+              -2px 2px 0 #000080,
+               2px 2px 0 #000080; /* Framing effect */
+}
