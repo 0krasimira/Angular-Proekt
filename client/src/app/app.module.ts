@@ -39,7 +39,11 @@ import { HttpClientModule } from '@angular/common/http';*/
     HomeComponent,
     NavigationComponent, 
     FooterComponent, 
-    AddPaintingComponent, RegisterComponent, LoginComponent, LogoutComponent ,  EditPaintingComponent
+    AddPaintingComponent, 
+    RegisterComponent, 
+    LoginComponent, 
+    LogoutComponent, 
+    EditPaintingComponent
   ],
   imports: [
     BrowserModule,

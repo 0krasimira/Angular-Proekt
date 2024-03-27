@@ -1,7 +1,10 @@
+/* Style for the navigation component */
 .topnav {
   background-color: #e01e65;
   overflow: hidden;
   justify-content: space-between;
+  display: flex; /* Added to make flex properties work */
+  align-items: center; /* Added to vertically center the content */
 }
 
 /* Style the links inside the navigation bar */
@@ -26,4 +29,23 @@
 .topnav a.active {
   background-color: #4d0847;
   color: rgb(212, 127, 255);
+}
+
+/* Style for the "Hello, email" part */
+.logged-in-info {
+  padding: 14px 20px; /* Adjust padding as needed */
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hello {
+  color: #f9f9f9; /* Almost white color for "Hello" */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.email {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2ba5d9; /* Blue color for the email */
+  font-weight: 400;
+  font-style: italic;
 }

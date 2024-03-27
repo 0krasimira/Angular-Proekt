@@ -6,13 +6,18 @@
   <a routerLink="/contacts">Contact us</a>
   <a routerLink="/add">Add painting</a>
 
-  <!-- render navigation links based on authentication status -->
+  <!-- Render navigation links based on authentication status -->
   <ng-container *ngIf="isLoggedIn$ | async; else notLoggedIn">
     <!-- links for authenticated users -->
     <a (click)="logout()">Logout</a>
+    <div class="logged-in-info">
+      <span class="hello">Hello,</span>
+      <span class="email">{{ userEmail$ | async }}</span>
+    </div>
   </ng-container>
+  
   <ng-template #notLoggedIn>
-    <!-- links for non-authenticated users -->
+    <!-- Links for non-authenticated users -->
     <a routerLink="/auth/register">Register</a>
     <a routerLink="/auth/login">Login</a>
   </ng-template>

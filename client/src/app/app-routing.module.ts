@@ -27,7 +27,7 @@ export const routes: Routes = [
   {path: 'paintings', component: PaintingsListComponent},
   { path: 'paintings/:paintingId', component: PaintingDetailsComponent }, 
   { path: 'paintings/:paintingId/edit', component: EditPaintingComponent }, 
-    { path: 'add', component: AddPaintingComponent, canActivate: [AuthGuardService] },
+  { path: 'add', component: AddPaintingComponent, canActivate: [AuthGuardService] },
   {path: 'auth/register', component: RegisterComponent},
   {path: 'auth/login', component: LoginComponent},
   {path: 'auth/logout', component: LogoutComponent}
