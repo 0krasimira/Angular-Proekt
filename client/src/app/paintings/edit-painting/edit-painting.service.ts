@@ -25,6 +25,6 @@ export class EditPaintingService {
   updatePainting(paintingId: string, updatedPaintingData: any): Observable<Painting> {
     const { apiUrl } = environment;
     const url = `${apiUrl}/paintings/${paintingId}/edit`; 
-    return this.http.put<Painting>(url, updatedPaintingData);
+    return this.http.post<Painting>(url, updatedPaintingData);
   }
 }
