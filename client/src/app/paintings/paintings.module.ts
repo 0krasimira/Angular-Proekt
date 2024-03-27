@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AddPaintingComponent } from './add-painting/add-painting.component';
 import { AuthService } from '../auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DeletePaintingComponent } from './delete-painting/delete-painting.component';
 
 
 
@@ -13,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     PaintingsListComponent,
     PaintingDetailsComponent,
+    DeletePaintingComponent,
   ],
   imports: [
     CommonModule, 

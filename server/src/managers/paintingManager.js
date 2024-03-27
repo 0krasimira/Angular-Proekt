@@ -28,3 +28,5 @@ exports.create = async (userId, paintingData) => {
         throw error; // Propagate the error to the caller
     }
 };
+
+// exports.delete = (paintingId) => Painting.findByIdAndDelete(paintingId)

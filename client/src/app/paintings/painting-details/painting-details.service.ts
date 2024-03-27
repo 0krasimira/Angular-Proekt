@@ -39,7 +39,7 @@ export class PaintingDetailsService implements OnDestroy {
   }
 
   deletePainting(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.apiUrl}/paintings/${id}`)
+    return this.http.delete<void>(`${environment.apiUrl}/paintings/${id}/delete`)
       .pipe(
         takeUntil(this.unsubscribe$)
       );

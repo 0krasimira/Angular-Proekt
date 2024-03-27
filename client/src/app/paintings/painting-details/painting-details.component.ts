@@ -52,6 +52,13 @@ export class PaintingDetailsComponent implements OnInit {
     }
   }
 
+  confirmDelete() {
+    const confirmDelete = confirm("Are you sure you want to delete this painting?");
+    if (confirmDelete) {
+      this.deletePainting();
+    }
+  }
+
   deletePainting() {
     if (this.currentUser && this.painting && this.currentUser.email === this.painting.author.email) {
       if (this.paintingId) {

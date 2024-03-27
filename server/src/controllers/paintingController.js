@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const paintingManager = require("../managers/paintingManager")
 const { isAuth, auth, isOwner } = require("../middlewares/authMiddleware")
+const Painting = require("../models/Painting")
 const getErrorMessage = require('../utils/errorUtils')
 
 router.use((req, res, next) => {
@@ -115,45 +116,21 @@ router.post('/paintings/:paintingId/edit', isAuth, isOwner, async (req, res) => 
 });
 
 
-// router.post("/paintings/:paintingId/edit", isAuth, async (req, res) => {
-//     const painting = req.body
-//     const paintingId = req.params.paintingId
-
-//     try{
-//         const isOwnerInfo = await paintingManager.getOneWithDetails(paintingId)
-//         console.log('isOwnerInfo', isOwnerInfo)
-//         const isOwner = isOwnerInfo.author._id.toString() == req.user?._id
-//         console.log('isOwner', isOwner)
-//         if(!isOwner){
-//             return res.status(401).json({error})
-//         }
-//         const editedPainting = await paintingManager.edit(paintingId, painting)
-//         console.log('edited painting: ', editedPainting)
-//         res.json(editedPainting)
-
-
-//     }catch(err){
-//         res.status(400).json({ err });
-//        }
-// })
-
-
-// router.get("/:electronicId/delete", isAuth, async (req, res) => {
-//     const electronicId = req.params.electronicId
-//     try{
-//         const isOwnerInfo = await electronicManager.getOneWithDetails(electronicId)
-//         const isOwner = isOwnerInfo.owner._id.toString() == req.user?._id
-
-//         if(!isOwner){
-//             return res.redirect(`/catalog`)
-//         }
-//         await electronicManager.delete(electronicId)
-//         res.redirect('/')
-
-//     }catch(err){
-//         res.status(400).render('404')
-//        }
-// })
+router.delete('/paintings/:id/delete', async (req, res) => {
+    try {
+      const paintingId = req.params.id;
+      // Check if the painting exists
+      const painting = await Painting.findById(paintingId);
+      if (!painting) {
+        return res.status(404).json({ error: 'Painting not found' });
+      }
+      await Painting.findByIdAndDelete(paintingId);
+      return res.status(204).send(); // No content
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Server error' });
+    }
+  });
 
 
 module.exports = router
