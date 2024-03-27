@@ -9,11 +9,9 @@ import { Painting } from 'src/app/types/painting';
 })
 export class EditPaintingService {
 
-
   constructor(private http: HttpClient) { }
 
   getPaintingById(paintingId: string, headers?: HttpHeaders): Observable<Painting> {
-    // Optional headers parameter is passed, if available
     const requestOptions = {
       headers: headers ? headers : new HttpHeaders()
     };
@@ -26,7 +24,7 @@ export class EditPaintingService {
 
   updatePainting(paintingId: string, updatedPaintingData: any): Observable<Painting> {
     const { apiUrl } = environment;
-    const url = `${apiUrl}/paintings/${paintingId}/edit`; // Adjust the URL to your API endpoint
-    return this.http.post<Painting>(url, updatedPaintingData);
+    const url = `${apiUrl}/paintings/${paintingId}/edit`; 
+    return this.http.put<Painting>(url, updatedPaintingData);
   }
 }

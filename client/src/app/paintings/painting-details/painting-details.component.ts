@@ -11,10 +11,9 @@ import { UserForAuth } from 'src/app/types/user';
   styleUrls: ['./painting-details.component.css']
 })
 export class PaintingDetailsComponent implements OnInit {
-
   painting: Painting | undefined;
   paintingId: string | undefined;
-  currentUser!: UserForAuth | null; // Define currentUser property
+  currentUser: UserForAuth | null = null; // Define currentUser property
 
   constructor(
     private route: ActivatedRoute,
@@ -25,7 +24,7 @@ export class PaintingDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     // Subscribe to changes in the current user
-    this.authService.user$.subscribe(user => {
+    this.authService.getUser().subscribe(user => {
       this.currentUser = user;
     });
 
@@ -65,5 +64,9 @@ export class PaintingDetailsComponent implements OnInit {
       // Handle unauthorized access
     }
   }
-}
 
+  // Function to check if the current user is authorized
+  isUserAuthorized(): boolean {
+    return !!this.currentUser && !!this.painting && this.currentUser.email === this.painting.author.email;
+  }
+}

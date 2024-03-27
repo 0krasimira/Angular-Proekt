@@ -1,41 +1,34 @@
-
-<html lang="en">
-<body>
-  <div class="painting-details" *ngIf="painting">
-    <div class="painting-image-container">
-      <img class="painting-image" [src]="painting.imageUrl" alt="Painting Image">
-    </div>
-    <ul class="painting-details-list">
-      <h2 class="h2">{{ painting.title }}</h2>
-      <li><strong>Year:</strong> {{ painting.year }}</li>
-      <li><strong>Technique:</strong> {{ painting.technique }}</li>
-      <li><strong>Description:</strong> {{ painting.description }}</li>
-      <li><strong>Price:</strong> {{ painting.price }}</li>
-      <li class="author" *ngIf="painting.author">
-        <strong>Author:</strong> {{ painting.author.email }} 
-      </li>
-      
-    </ul>
-    <div class="buttons">
-      <a [routerLink]="['/paintings']">
-        <button class="back-btn">Back</button>
-      </a>
-      
-      <button class="profile-btn">Go to artist's profile</button>
-      
-      <!-- New buttons for Edit and Delete -->
-      <a [routerLink]="['/paintings', paintingId, 'edit']">
-        <button class="edit-btn">Edit</button>
-      </a>
-     
-      <button class="delete-btn">Delete</button>
-    </div>
+<div class="painting-details" *ngIf="painting">
+  <div class="painting-image-container">
+    <img class="painting-image" [src]="painting.imageUrl" alt="Painting Image">
   </div>
-  <div class="loading" *ngIf="!painting">
-    <p>Loading...</p>
+  <ul class="painting-details-list">
+    <h2 class="h2">{{ painting.title }}</h2>
+    <li><strong>Year:</strong> {{ painting.year }}</li>
+    <li><strong>Technique:</strong> {{ painting.technique }}</li>
+    <li><strong>Description:</strong> {{ painting.description }}</li>
+    <li><strong>Price:</strong> {{ painting.price }}</li>
+    <li class="author" *ngIf="painting.author">
+      <strong>Author:</strong> {{ painting.author.email }} 
+    </li>
+  </ul>
+  <div class="buttons">
+    <a [routerLink]="['/paintings']">
+      <button class="back-btn">Back</button>
+    </a>
+    
+    <button class="profile-btn">Go to artist's profile</button>
+    
+    <!-- Edit and Delete buttons with router links -->
+    <a [routerLink]="['/paintings', paintingId, 'edit']" *ngIf="isUserAuthorized()">
+      <button class="edit-btn">Edit</button>
+    </a>
+    <button class="delete-btn" *ngIf="isUserAuthorized()" (click)="deletePainting()">Delete</button>
   </div>
-</body>
-</html>
+</div>
+<div class="loading" *ngIf="!painting">
+  <p>Loading...</p>
+</div>
 
 
 /* IMPLEMENT EDIT AND DELETE FUNCTIONALITIES ADD PROFILE AND SEARCH IF POSSIBLE*/

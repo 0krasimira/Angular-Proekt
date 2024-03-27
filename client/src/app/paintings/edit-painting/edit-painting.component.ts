@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditPaintingService } from './edit-painting.service';
 import { Painting } from 'src/app/types/painting';
+import { AuthService } from 'src/app/auth.service';
 import { HttpHeaders } from '@angular/common/http';
-import { AuthService } from 'src/app/auth.service'; // Import the AuthService
 
 @Component({
   selector: 'app-edit-painting',
@@ -15,7 +15,6 @@ export class EditPaintingComponent implements OnInit {
 
   editPaintingForm!: FormGroup;
   painting: Painting | undefined;
-  authorEmail: string = '';
   currentUserEmail: string | null = null; // Variable to store the current user's email
 
   constructor(
@@ -27,7 +26,6 @@ export class EditPaintingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('editpaintingcomponent initialized');
     this.editPaintingForm = this.formBuilder.group({
       title: ['', Validators.required],
       year: ['', Validators.required],
@@ -40,7 +38,6 @@ export class EditPaintingComponent implements OnInit {
 
     const paintingId = this.route.snapshot.params['paintingId'] || '';
 
-    // Subscribe to the user$ observable to get the current user's email
     this.authService.user$.subscribe(user => {
       if (user) {
         this.currentUserEmail = user.email;
@@ -64,7 +61,6 @@ export class EditPaintingComponent implements OnInit {
         console.log('Fetched painting:', painting);
         this.painting = painting;
         this.patchFormWithPaintingData();
-        this.authorEmail = painting.author.email;
       },
       (error) => {
         console.error('Error fetching painting:', error);

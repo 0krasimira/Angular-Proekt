@@ -20,12 +20,12 @@ export class AuthService {
   constructor(private httpClient: HttpClient) { }
 
   setUser(user: UserForAuth): void {
-    console.log(`setting user: ${JSON.stringify(user)}`);
+    console.log(`setting user: ${user.email}`);
     this.userSubject.next(user);
   }
 
   getUser(): Observable<UserForAuth | null> {
-    console.log(`getting user: ${JSON.stringify(this.user$)}`);
+    console.log('getting user:', this.userSubject.getValue()?.email);
     return this.userSubject.asObservable();
   }
 
