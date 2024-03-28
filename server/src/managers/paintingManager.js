@@ -22,7 +22,7 @@ exports.create = async (userId, paintingData) => {
         });
 
         const savedPainting = await newPainting.save();
-        await User.findByIdAndUpdate(userId, {$push: {createdPaintings: savedPainting._id}})
+        await User.findByIdAndUpdate(userId, {$push: {paintings: savedPainting._id}})
         return savedPainting;
     } catch (error) {
         throw error; // Propagate the error to the caller

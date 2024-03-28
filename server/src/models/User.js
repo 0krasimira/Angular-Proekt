@@ -14,9 +14,9 @@ const userSchema = new mongoose.Schema({
         minLength: [4, "Your password should be at least 4 characters. Please, enter a valid password."]
     },
 
-    createdPaintings: [{
+    paintings: [{
         type: mongoose.Types.ObjectId,
-        ref: 'Paitning'
+        ref: 'Painting'
     }],
 });
 

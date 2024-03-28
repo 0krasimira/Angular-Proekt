@@ -49,7 +49,7 @@ router.get('/:userId', async (req, res) => {
     const userId = req.params.userId;
     console.log('Requested user ID:', userId);
     try {
-        const currentUser = await userManager.getOneUser(userId); 
+        const currentUser = await userManager.getOneUser(userId)
         console.log(currentUser);
         if (!currentUser) {
             return res.status(404).json({ message: 'User not found' });

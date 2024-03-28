@@ -10,14 +10,12 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  user$: Observable<UserForAuth | null>; // Define user$ property
+  user$: Observable<UserForAuth | null> = of(null); // Initialize user$ with null
 
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService
-  ) {
-    this.user$ = of(null); // Initialize user$ with null using of operator
-  }
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -40,5 +38,7 @@ export class UserProfileComponent implements OnInit {
     });
   }
 }
+
+
 
 

@@ -2,20 +2,19 @@
     <h2>User Profile</h2>
     
     <div>
-      <div class="profile-photo" *ngIf="user.photo">
-        <img [src]="user.photo" alt="Profile Photo">
-      </div>
-      
-      <div class="profile-info">
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        <!-- Removed "Number of Paintings" -->
-        <p><strong>Created Paintings:</strong></p>
-        <ul>
-          <li *ngFor="let painting of user.paintings">{{ painting.title }}</li>
-        </ul>
-      </div>
+        <div class="profile-photo" *ngIf="user.photo">
+            <img [src]="user.photo" alt="Profile Photo">
+        </div>
+        
+        <div class="profile-info">
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Created Paintings:</strong></p>
+            <ul *ngIf="user.paintings && user.paintings.length > 0">
+                <li *ngFor="let painting of user.paintings">
+                    <a [routerLink]="['/paintings', painting._id]">{{ painting.title }}</a>
+                </li>
+            </ul>
+            <p *ngIf="!user.paintings || user.paintings.length === 0">No paintings found.</p>
+        </div>
     </div>
-  </div>
-  
-
-   <p>User profile works!</p>
+</div>
