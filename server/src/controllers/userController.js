@@ -45,21 +45,21 @@ router.get('/logout', isAuth, (req, res) => {
     res.status(200).clearCookie('token').send();
 });
 
-// router.get('/:userId', async (req, res) => {
-//     const userId = req.params.userId;
-//     console.log('Requested user ID:', userId);
-//     try {
-//         const currentUser = await userManager.getOne(userId); 
-//         console.log(currentUser);
-//         if (!currentUser) {
-//             return res.status(404).json({ message: 'User not found' });
-//         }
-//         return res.json(currentUser);
-//     } catch (error) {
-//         console.error('Error fetching one user:', error);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// });
+router.get('/:userId', async (req, res) => {
+    const userId = req.params.userId;
+    console.log('Requested user ID:', userId);
+    try {
+        const currentUser = await userManager.getOneUser(userId); 
+        console.log(currentUser);
+        if (!currentUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        return res.json(currentUser);
+    } catch (error) {
+        console.error('Error fetching one user:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 
 

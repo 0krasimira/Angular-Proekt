@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthGuardService } from './authGuardService';
 import { EditPaintingComponent } from './paintings/edit-painting/edit-painting.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 
@@ -30,7 +31,8 @@ export const routes: Routes = [
   { path: 'add', component: AddPaintingComponent, canActivate: [AuthGuardService] },
   {path: 'auth/register', component: RegisterComponent},
   {path: 'auth/login', component: LoginComponent},
-  {path: 'auth/logout', component: LogoutComponent}
+  {path: 'auth/logout', component: LogoutComponent},
+  { path: 'users/:userId', component: UserProfileComponent }
 
 ];
 

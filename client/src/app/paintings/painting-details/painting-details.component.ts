@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Painting } from 'src/app/types/painting';
 import { PaintingDetailsService } from './painting-details.service';
@@ -11,9 +11,10 @@ import { UserForAuth } from 'src/app/types/user';
   styleUrls: ['./painting-details.component.css']
 })
 export class PaintingDetailsComponent implements OnInit {
-  painting: Painting | undefined;
-  paintingId: string | undefined;
-  currentUser: UserForAuth | null = null; // Define currentUser property
+  @Input() artistId: string = ''; // Input property to receive artistId
+  painting: Painting | undefined; // Holds the painting details
+  paintingId: string | undefined; // Holds the ID of the painting
+  currentUser: UserForAuth | null = null; // Holds the current user details
 
   constructor(
     private route: ActivatedRoute,
@@ -22,19 +23,26 @@ export class PaintingDetailsComponent implements OnInit {
     private authService: AuthService, // Inject AuthService
   ) {}
 
+  // Navigates to the artist's profile page
+  goToArtistProfile(artistId: string) {
+    this.router.navigate(['/users', artistId]);
+  }
+
   ngOnInit(): void {
     // Subscribe to changes in the current user
     this.authService.getUser().subscribe(user => {
       this.currentUser = user;
     });
 
+    // Retrieve painting details based on the route parameter
     this.route.paramMap.subscribe(params => {
       const paintingIdParam = params.get('paintingId');
       if (paintingIdParam !== null) {
         this.paintingId = paintingIdParam;
+        // Fetch painting details from the service
         this.paintingDetailsService.getPaintingById(this.paintingId).subscribe((painting) => {
           this.painting = painting;
-          console.log(this.painting);
+          console.log(this.painting); // Log the fetched painting
         });
       } else {
         console.error('paintingId parameter is missing');
@@ -42,28 +50,31 @@ export class PaintingDetailsComponent implements OnInit {
     });
   }
 
+  // Redirects to the edit page if authorized
   editPainting() {
     // Check if the current user is authorized to edit the painting
     if (this.currentUser && this.painting && this.currentUser.email === this.painting.author.email) {
-      this.router.navigate(['/paintings', this.paintingId, 'edit']);
+      this.router.navigate(['/paintings', this.paintingId, 'edit']); // Navigate to edit page
     } else {
       console.error('You are not authorized to edit this painting.');
       // Handle unauthorized access
     }
   }
 
+  // Asks for confirmation before deleting the painting
   confirmDelete() {
     const confirmDelete = confirm("Are you sure you want to delete this painting?");
     if (confirmDelete) {
-      this.deletePainting();
+      this.deletePainting(); // Call deletePainting method if confirmed
     }
   }
 
+  // Deletes the painting if authorized
   deletePainting() {
     if (this.currentUser && this.painting && this.currentUser.email === this.painting.author.email) {
       if (this.paintingId) {
         this.paintingDetailsService.deletePainting(this.paintingId).subscribe(() => {
-          this.router.navigate(['/paintings']);
+          this.router.navigate(['/paintings']); // Navigate back to paintings list after deletion
         });
       }
     } else {
@@ -72,7 +83,7 @@ export class PaintingDetailsComponent implements OnInit {
     }
   }
 
-  // Function to check if the current user is authorized
+  // Function to check if the current user is authorized to edit or delete the painting
   isUserAuthorized(): boolean {
     return !!this.currentUser && !!this.painting && this.currentUser.email === this.painting.author.email;
   }

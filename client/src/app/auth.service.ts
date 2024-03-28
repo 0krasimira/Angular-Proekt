@@ -81,4 +81,14 @@ export class AuthService {
     // Return an observable that completes immediately
     return of(null);
   }
+
+  getUserById(userId: string): Observable<UserForAuth | null> {
+    return this.httpClient.get<UserForAuth>(`${environment.apiUrl}/auth/${userId}`);
+  }
+
+
+  // getUserById(userId: string): Observable<UserForAuth | null> {
+  //   const url = `${this.apiUrl}/auth/${userId}`; // Update the URL to fetch user data from the correct endpoint
+  //   return this.httpClient.get<UserForAuth>(url);
+  // }
 }
