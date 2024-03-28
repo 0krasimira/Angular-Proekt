@@ -72,6 +72,15 @@
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
   }
+
+  .error-message {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
   
   /* Style for submit button */
   .btn-primary {

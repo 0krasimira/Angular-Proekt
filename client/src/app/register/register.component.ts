@@ -28,15 +28,18 @@ export class RegisterComponent implements OnInit {
       const password = this.registerForm.get('password')!.value;
       const repeatPassword = this.registerForm.get('repeatPassword')!.value;
       if (password !== repeatPassword) {
-        console.error('Passwords do not match');
+        this.errorMessage = 'Passwords do not match';
         return;
       }
 
+      
+  
       // Register user
       this.registerService.registerUser(this.registerForm.value).subscribe(
         (response) => {
           console.log(response);
           console.log('user registered successfully!', response.valueOf);
+          this.errorMessage = ''; // Reset errorMessage on successful registration
           this.router.navigate(['auth/login']);
         },
         (error) => {
@@ -46,4 +49,5 @@ export class RegisterComponent implements OnInit {
       );
     }
   }
+  
 }
