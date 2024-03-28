@@ -22,6 +22,7 @@ import { TokenInterceptor } from './tokenInterceptor';
 import { LogoutComponent } from './logout/logout.component';
 import { EditPaintingComponent } from './paintings/edit-painting/edit-painting.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -44,7 +45,7 @@ import { HttpClientModule } from '@angular/common/http';*/
     RegisterComponent, 
     LoginComponent, 
     LogoutComponent, 
-    EditPaintingComponent, UserProfileComponent
+    EditPaintingComponent, UserProfileComponent, NotFoundComponent
   ],
   imports: [
     BrowserModule,

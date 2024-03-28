@@ -13,6 +13,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AuthGuardService } from './authGuardService';
 import { EditPaintingComponent } from './paintings/edit-painting/edit-painting.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -32,7 +33,9 @@ export const routes: Routes = [
   {path: 'auth/register', component: RegisterComponent},
   {path: 'auth/login', component: LoginComponent},
   {path: 'auth/logout', component: LogoutComponent},
-  { path: 'users/:userId', component: UserProfileComponent }
+  { path: 'users/:userId', component: UserProfileComponent },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '/404' }
 
 ];
 

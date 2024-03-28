@@ -1,0 +1,45 @@
+body {
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/026/767/235/original/black-woman-painting-easel-404-error-animation-drawing-workshop-error-message-gif-motion-graphic-african-woman-with-paint-brush-animated-character-cartoon-4k-isolated-on-white-background-video.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #343a40;
+    height: 100vh; /* Set the body height to 100% of viewport height */
+    display: flex; /* Use flexbox to center the container vertically */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+
+.container {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #343a40;
+}
+
+.container h1 {
+    font-size: 48px;
+}
+
+.container p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.container a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.container a:hover {
+    color: #0056b3;
+}
+
+  

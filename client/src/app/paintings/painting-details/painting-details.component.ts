@@ -33,7 +33,7 @@ export class PaintingDetailsComponent implements OnInit {
     this.authService.getUser().subscribe(user => {
       this.currentUser = user;
     });
-
+  
     // Retrieve painting details based on the route parameter
     this.route.paramMap.subscribe(params => {
       const paintingIdParam = params.get('paintingId');
@@ -43,12 +43,19 @@ export class PaintingDetailsComponent implements OnInit {
         this.paintingDetailsService.getPaintingById(this.paintingId).subscribe((painting) => {
           this.painting = painting;
           console.log(this.painting); // Log the fetched painting
+        }, error => {
+          console.error('Error fetching painting details:', error);
+          // Handle error - navigate to "Not Found" page or display an error message
+          this.router.navigate(['/not-found']); // Navigate to "Not Found" page
         });
       } else {
         console.error('paintingId parameter is missing');
+        // Handle missing paintingId parameter - navigate to "Not Found" page or display an error message
+        this.router.navigate(['/not-found']); // Navigate to "Not Found" page
       }
     });
   }
+  
 
   // Redirects to the edit page if authorized
   editPainting() {
