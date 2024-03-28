@@ -1,20 +1,21 @@
-<div class="user-profile" *ngIf="user$ | async as user">
-    <h2>User Profile</h2>
-    
-    <div>
-        <div class="profile-photo" *ngIf="user.photo">
-            <img [src]="user.photo" alt="Profile Photo">
-        </div>
+<div class="user-profile-container">
+    <div class="user-profile" *ngIf="user$ | async as user">
+        <h2><span class="user-email">{{ user.email }}</span>'s Profile</h2>
         
         <div class="profile-info">
-            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>For purchase, please email at: </strong> {{ user.email }}</p>
             <p><strong>Created Paintings:</strong></p>
-            <ul *ngIf="user.paintings && user.paintings.length > 0">
-                <li *ngFor="let painting of user.paintings">
-                    <a [routerLink]="['/paintings', painting._id]">{{ painting.title }}</a>
-                </li>
-            </ul>
-            <p *ngIf="!user.paintings || user.paintings.length === 0">No paintings found.</p>
+            <ng-container *ngIf="userPaintings$ | async as userPaintings">
+                <ul *ngIf="userPaintings.length > 0" class="paintings-list">
+                    <li *ngFor="let painting of userPaintings">
+                        <div>
+                            <!-- Make the painting title clickable with routerLink -->
+                            <a [routerLink]="['/paintings', painting._id]" class="painting-title">{{ painting.title }}</a>
+                        </div>
+                    </li>
+                </ul>
+                <p *ngIf="userPaintings.length === 0">No paintings found.</p>
+            </ng-container>
         </div>
     </div>
 </div>

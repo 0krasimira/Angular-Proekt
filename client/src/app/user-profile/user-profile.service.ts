@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../types/user';
+import { Painting } from '../types/painting'; // Import the Painting type
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,11 @@ export class UserProfileService {
 
   constructor(private http: HttpClient) { }
 
-  getUserById(userId: string): Observable<User> {
-    const url = `${this.baseUrl}/${userId}`; // Construct the complete URL
-    return this.http.get<User>(url);
+  getUserPaintings(userId: string): Observable<Painting[]> {
+    const url = `${this.baseUrl}/${userId}/paintings`; // Construct the complete URL
+    return this.http.get<Painting[]>(url);
   }
 }
 
 
+// http://localhost:3000/auth/:userId/paintings

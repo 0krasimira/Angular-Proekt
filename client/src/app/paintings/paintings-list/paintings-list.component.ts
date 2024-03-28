@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Painting } from '../../types/painting';
 import { ApiService } from '../../api.service';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./paintings-list.component.css']
 })
 export class PaintingsListComponent implements OnInit, OnDestroy {
-  paintings: Painting[] = [];
+  @Input() paintings: Painting[] = [];
   private paintingsSubscription: Subscription | undefined;
 
   constructor(private api: ApiService, private router: Router) {}
@@ -24,9 +24,6 @@ export class PaintingsListComponent implements OnInit, OnDestroy {
   }
 
   showPaintingDetails(paintingId: string): void {
-    this.paintingsSubscription = this.api.getPaintingById(paintingId).subscribe((paintingId) => {
-     console.log(paintingId)
-    })
     this.router.navigate(['/paintings', paintingId]);
   }
 

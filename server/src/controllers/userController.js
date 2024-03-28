@@ -5,6 +5,7 @@ const { isGuest, isAuth } = require('../middlewares/authMiddleware')
 const User = require("../models/User")
 const paintingManager = require('../managers/paintingManager')
 const { ok } = require("assert")
+const Painting = require("../models/Painting")
 
 
 
@@ -60,6 +61,27 @@ router.get('/:userId', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+router.get('/:userId/paintings', async (req, res) => {
+    const userId = req.params.userId;
+    console.log('Requested user ID:', userId);
+    try {
+        // Retrieve paintings created by the specified user
+        const userPaintings = await Painting.find({ author: userId });
+        console.log(userPaintings)
+        console.log(userId)
+        // Check if the user has created any paintings
+        if (userPaintings.length === 0) {
+            return res.status(404).json({ message: 'User has not created any paintings' });
+        }
+
+        // Return the paintings created by the user
+        return res.json(userPaintings);
+    } catch (error) {
+        console.error('Error fetching user paintings:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+})
 
 
 

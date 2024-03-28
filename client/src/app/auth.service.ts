@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { UserForAuth } from './types/user';
 import { environment } from './environment/environment.development';
 import { HttpClient } from '@angular/common/http';
+import { Painting } from './types/painting';
 
 @Injectable({
   providedIn: 'root'
@@ -84,6 +85,10 @@ export class AuthService {
 
   getUserById(userId: string): Observable<UserForAuth | null> {
     return this.httpClient.get<UserForAuth>(`${environment.apiUrl}/auth/${userId}`);
+  }
+
+  getPaintingsByUser(userId: string): Observable<Painting[]> {
+    return this.httpClient.get<Painting[]>(`${environment.apiUrl}/auth/${userId}/paintings`);
   }
 
 }

@@ -1,0 +1,79 @@
+/* User Profile Container */
+.user-profile-container {
+    display: flex;
+    justify-content: center; /* Center the container horizontally */
+    align-items: center; /* Center the container vertically */
+    height: 90vh; /* Set the height to 90% of the viewport height */
+    padding-top: 20px; /* Add space from top */
+    background-image: url('https://i.pinimg.com/564x/d8/a0/de/d8a0def37af0c55e9d93582eba69257f.jpg');
+    background-size: 90%; /* Resize the background image */
+    background-position: center; /* Center the background image */
+    margin: 0; /* Remove margin */
+}
+
+/* User Profile */
+.user-profile {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    /* border: 1px solid #ccc; */
+    border-radius: 10px;
+    background-color: #f3b4eca5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 500px; /* Adjust width as needed */
+    margin-top: 10px; /* Add margin to the top */
+}
+
+/* Profile Info */
+.profile-info p {
+    margin-bottom: 15px; /* Increase margin */
+    font-size: 16px; /* Increase font size */
+}
+
+/* Profile Info Strong */
+.profile-info strong {
+    color: #333;
+}
+
+/* No Paintings Message */
+.profile-info p.no-paintings {
+    font-style: italic;
+    color: #666;
+}
+
+/* User Email in Profile Header */
+.user-profile h2 {
+    margin-bottom: 20px;
+    text-align: center; /* Center the heading */
+    font-size: 24px; /* Increase font size */
+}
+
+.user-profile h2 .user-email {
+    color: blue;
+}
+
+/* Painting Title */
+.user-profile .painting-title {
+    font-weight: bold; /* Thicker font */
+    color: #930137; /* Mint color */
+    font-size: 18px; /* Increase font size */
+    margin-bottom: 15px; /* Increase space between painting names */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: color 0.3s ease; /* Smooth color transition */
+    display: block; /* Make painting titles block elements */
+    
+}
+
+/* Change color on hover */
+.user-profile .painting-title:hover {
+    color: #e1e458; /* Lavender color on hover */
+    transform: scale(1.15); /* Increase scale on hover */
+}
+
+/* Remove underline from painting titles */
+.user-profile .paintings-list li a {
+    text-decoration: none;
+}
+
+.user-profile ul {
+    list-style-type: none;
+}

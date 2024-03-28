@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { UserForAuth } from '../types/user';
 import { Observable, of } from 'rxjs';
+import { Painting } from '../types/painting'; // Import the Painting type
+import { switchMap } from 'rxjs/operators'; // Import switchMap operator
 
 @Component({
   selector: 'app-user-profile',
@@ -10,7 +12,8 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  user$: Observable<UserForAuth | null> = of(null); // Initialize user$ with null
+  user$: Observable<UserForAuth | null> = of(null); // Initialize user$ property
+  userPaintings$: Observable<Painting[]> = of([]); // Initialize userPaintings$ property
 
   constructor(
     private route: ActivatedRoute,
@@ -18,27 +21,32 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      const userId = params['userId'];
-      if (userId) {
-        this.authService.getUserById(userId).subscribe(
-          (user: UserForAuth | null) => { // Adjust the type of the user parameter
-            if (user !== null) { // Check if the user is not null
-              this.user$ = of(user); // Assign the fetched user to user$ using of operator
-            } else {
-              this.user$ = of(null); // Assign null to user$ in case of error using of operator
-            }
-          },
-          (error) => {
-            console.error('Error fetching user:', error);
-            this.user$ = of(null); // Assign null to user$ in case of error using of operator
-          }
-        );
-      }
+    this.user$ = this.route.params.pipe(
+      switchMap(params => {
+        const userId = params['userId'];
+        if (userId) {
+          return this.authService.getUserById(userId);
+        } else {
+          console.error('User ID not provided.');
+          return of(null);
+        }
+      })
+    );
+  
+    this.userPaintings$ = this.user$.pipe(
+      switchMap(user => {
+        if (user) {
+          return this.authService.getPaintingsByUser(user._id);
+        } else {
+          console.error('User not found.');
+          return of([]);
+        }
+      })
+    );
+  
+    // Subscribe to userPaintings$ and log the paintings
+    this.userPaintings$.subscribe(paintings => {
+      console.log('User paintings:', paintings);
     });
   }
-}
-
-
-
-
+}  
