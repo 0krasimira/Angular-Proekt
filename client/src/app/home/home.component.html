@@ -23,6 +23,11 @@
         <p class="get-started-p">Get Started Today!</p>
         <p>Don't miss out on the opportunity to be part of our growing community of self-taught artists.</p>
         
+        <!-- Show the button only if the user is logged in -->
+        <div *ngIf="isLoggedIn">
+          <p><a routerLink="/paintings" id="browse-paintings">Browse All Paintings</a></p>
+        </div>
+        
         <!-- Hide the messages if user is logged in -->
         <div *ngIf="!isLoggedIn">
           <p> <a href="/auth/register" id="signup">Sign up now</a></p>

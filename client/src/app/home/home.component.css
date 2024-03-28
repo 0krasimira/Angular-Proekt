@@ -162,3 +162,20 @@
     padding-bottom: 20px; /* Adjust the padding as needed */
   
   }
+
+  #browse-paintings {
+    background-color: #ff13c4; /* Blue background color */
+    color: #fff; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add padding */
+    border-radius: 5px; /* Add border radius */
+    text-decoration: none; /* Remove underline */
+    margin-top: 10px; /* Add top margin */
+    text-decoration: none;
+    transition: all 0.3s ease
+  }
+  
+  #browse-paintings:hover {
+    background-color: #c1723e; /* Darker blue background color on hover */
+    padding: 20px 35px;
+  }
