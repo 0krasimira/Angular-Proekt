@@ -17,15 +17,10 @@
       <button class="back-btn">Back</button>
     </a>
     
-    <button class="profile-btn" (click)="goToArtistProfile(painting.author._id)">Go to artist's profile</button>
-
-    
-    
-    <!-- Edit and Delete buttons with router links -->
-    <a [routerLink]="['/paintings', paintingId, 'edit']" *ngIf="isUserAuthorized()">
-      <button class="edit-btn">Edit</button>
-    </a>
-    <button class="delete-btn" *ngIf="isUserAuthorized()" (click)="confirmDelete()">Delete</button>
+    <!-- Conditionally display the profile button based on user authentication -->
+    <button class="profile-btn" *ngIf="isLoggedIn$ | async" (click)="goToArtistProfile(painting.author._id)">
+      Go to artist's profile
+    </button>
   </div>
 </div>
 <div class="loading" *ngIf="!painting">

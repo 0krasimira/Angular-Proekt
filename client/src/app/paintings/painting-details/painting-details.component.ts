@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/auth.service';
+import { UserForAuth } from 'src/app/types/user';
 import { Painting } from 'src/app/types/painting';
 import { PaintingDetailsService } from './painting-details.service';
-import { AuthService } from 'src/app/auth.service'; // Import AuthService
-import { UserForAuth } from 'src/app/types/user';
 
 @Component({
   selector: 'app-painting-details',
@@ -15,13 +16,16 @@ export class PaintingDetailsComponent implements OnInit {
   painting: Painting | undefined; // Holds the painting details
   paintingId: string | undefined; // Holds the ID of the painting
   currentUser: UserForAuth | null = null; // Holds the current user details
+  isLoggedIn$: Observable<boolean>; // Observable to check if the user is logged in
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private paintingDetailsService: PaintingDetailsService,
-    private authService: AuthService, // Inject AuthService
-  ) {}
+    private authService: AuthService
+  ) {
+    this.isLoggedIn$ = this.authService.isLoggedIn$;
+  }
 
   // Navigates to the artist's profile page
   goToArtistProfile(artistId: string) {

@@ -91,4 +91,6 @@ export class AuthService {
     return this.httpClient.get<Painting[]>(`${environment.apiUrl}/auth/${userId}/paintings`);
   }
 
+  
+
 }
