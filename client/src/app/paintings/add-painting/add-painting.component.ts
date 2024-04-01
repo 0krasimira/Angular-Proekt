@@ -12,7 +12,8 @@ import { AuthService } from 'src/app/auth.service';
 export class AddPaintingComponent implements OnInit {
   paintingForm: FormGroup;
   authorEmail: string = '';
-  
+  errorMessage: string = '';
+  submitted: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -25,7 +26,7 @@ export class AddPaintingComponent implements OnInit {
       year: ['', Validators.required],
       technique: ['', Validators.required],
       description: ['', Validators.required],
-      imageUrl: ['', Validators.required],
+      imageUrl: ['', [Validators.required, Validators.pattern(/^https?:\/\//)]],
       price: ['', Validators.required],
       author: [{ value: this.authorEmail, disabled: true }, Validators.required] // Disable and set authorEmail
     });
@@ -48,27 +49,28 @@ export class AddPaintingComponent implements OnInit {
   }
   
   onSubmit() {
-    if (this.paintingForm.valid) {
-      // Submit the painting form
-      console.log('Submitting painting:', this.paintingForm.value);
-      this.addPaintingService.submitPainting(this.paintingForm.value).subscribe(
-        (response) => {
-          console.log(response);
-          console.log('Painting submitted successfully!');
-          this.router.navigate(['/paintings']);
-        },
-        (error) => {
-          console.error('Error submitting painting:', error);
-          if (error.error && error.error.message) {
-            console.error('Error message from server:', error.error.message);
-          }
-          if (error.status === 0) {
-            console.error('Connection error: Could not connect to server.');
-          }
-        }
-      );
+    this.submitted = true; // Set submitted to true on form submission
+
+    if (this.paintingForm.invalid) {
+      // If the form is invalid, mark all fields as touched to display errors
+      this.paintingForm.markAllAsTouched();
+      return;
     }
+
+    this.addPaintingService.submitPainting(this.paintingForm.value).subscribe(
+      (response) => {
+        console.log(response);
+        console.log('Painting submitted successfully!');
+        this.router.navigate(['/paintings']);
+      },
+      (error) => {
+        console.error('Error submitting painting:', error);
+        if (error.error && error.error.message) {
+          this.errorMessage = error.error.message;
+        } else {
+          this.errorMessage = 'An error occurred while submitting the form.';
+        }
+      }
+    );
   }
 }
-
-

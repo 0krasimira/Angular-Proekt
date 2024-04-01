@@ -18,6 +18,7 @@ export class AuthService {
   userId$: Observable<string | null> = this.userIdSubject.asObservable();
   user$: Observable<UserForAuth | null> = this.userSubject.asObservable();
 
+
   constructor(private httpClient: HttpClient) { }
 
   setUser(user: UserForAuth): void {
@@ -91,6 +92,5 @@ export class AuthService {
     return this.httpClient.get<Painting[]>(`${environment.apiUrl}/auth/${userId}/paintings`);
   }
 
-  
 
 }

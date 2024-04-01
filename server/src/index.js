@@ -18,10 +18,12 @@ app.use(bodyParser.json({extended: true }))
 
 app.use(router)
 app.use('/auth', userRouter)
-router.get('*', (req,res) => {
-    res.status(404).send('The resource you are trying to access could not be found. Please try again.')
-})
+
+
 mongoose.connect("mongodb://127.0.0.1:27017/proekt").then(() => {console.log("DB connected succesfully.");
 app.listen(3000, () => 
     console.log(`Server is listening on port ${3000}...`))
 }).catch(err => console.log("Cannot connect to DB."))
+
+
+// fix 404, routing and profile on the front end

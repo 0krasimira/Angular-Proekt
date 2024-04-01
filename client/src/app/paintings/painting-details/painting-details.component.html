@@ -17,7 +17,6 @@
       <button class="back-btn">Back</button>
     </a>
     
-    <!-- Conditionally display the profile button based on user authentication -->
     <button class="profile-btn" *ngIf="isLoggedIn$ | async" (click)="goToArtistProfile(painting.author._id)">
       Go to artist's profile
     </button>
