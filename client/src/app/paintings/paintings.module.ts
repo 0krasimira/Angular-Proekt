@@ -10,11 +10,13 @@ import { DeletePaintingComponent } from './delete-painting/delete-painting.compo
 
 
 
+
 @NgModule({
   declarations: [
     PaintingsListComponent,
     PaintingDetailsComponent,
     DeletePaintingComponent,
+    
   ],
   imports: [
     CommonModule, 

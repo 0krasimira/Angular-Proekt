@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    width: 50%;
+    margin: 70px auto; /* Adjust top margin as needed */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  h2 {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  input[type="number"] {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    font-family: Arial, sans-serif;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  p {
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+  }
+  

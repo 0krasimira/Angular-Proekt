@@ -29,4 +29,3 @@ exports.create = async (userId, paintingData) => {
     }
 };
 
-// exports.delete = (paintingId) => Painting.findByIdAndDelete(paintingId)

@@ -23,6 +23,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { EditPaintingComponent } from './paintings/edit-painting/edit-painting.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SearchPaintingsComponent } from './paintings/search/search-paintings.component';
 
 
 
@@ -45,7 +46,7 @@ import { HttpClientModule } from '@angular/common/http';*/
     RegisterComponent, 
     LoginComponent, 
     LogoutComponent, 
-    EditPaintingComponent, UserProfileComponent, NotFoundComponent
+    EditPaintingComponent, UserProfileComponent, NotFoundComponent, SearchPaintingsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +54,7 @@ import { HttpClientModule } from '@angular/common/http';*/
     HttpClientModule, 
     ReactiveFormsModule,
     PaintingsModule,
+    FormsModule
   ],
   providers: [AuthService, {
     provide: HTTP_INTERCEPTORS,

@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Search Paintings</h2>
+  <form (ngSubmit)="onSubmit()" #searchForm="ngForm">
+    <div class="form-group">
+      <label for="minPrice">Min Price:</label>
+      <input type="number" class="form-control" id="minPrice" name="minPrice" [(ngModel)]="minPrice">
+    </div>
+    <div class="form-group">
+      <label for="maxPrice">Max Price:</label>
+      <input type="number" class="form-control" id="maxPrice" name="maxPrice" [(ngModel)]="maxPrice">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+  <!-- Display paintings -->
+  <div *ngIf="paintings.length > 0">
+    <h3>Search Results:</h3>
+    <div class="paintings-container">
+      <div *ngFor="let painting of paintings" class="card">
+        <img [src]="painting.imageUrl" class="card-img-top" alt="Painting Image">
+        <div class="card-body">
+          <h5 class="card-title">{{ painting.title }}</h5>
+          <p class="card-text">Year: {{ painting.year }}</p>
+          <p class="card-text">Technique: {{ painting.technique }}</p>
+          <p class="card-text">Description: {{ painting.description }}</p>
+          <p class="card-text">Price: {{ painting.price }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Show message if no paintings found -->
+  <div *ngIf="paintings.length === 0 && searchForm.submitted">
+    <p>No paintings found matching the specified criteria.</p>
+  </div>
+</div>

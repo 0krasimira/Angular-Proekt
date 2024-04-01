@@ -12,6 +12,7 @@ import { PaintingDetailsService } from './painting-details.service';
   styleUrls: ['./painting-details.component.css']
 })
 export class PaintingDetailsComponent implements OnInit {
+  
   @Input() artistId: string = ''; // Input property to receive artistId
   painting: Painting | undefined; // Holds the painting details
   paintingId: string | undefined; // Holds the ID of the painting

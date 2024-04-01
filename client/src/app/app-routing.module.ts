@@ -14,6 +14,7 @@ import { AuthGuardService } from './authGuardService';
 import { EditPaintingComponent } from './paintings/edit-painting/edit-painting.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SearchPaintingsComponent } from './paintings/search/search-paintings.component';
 
 
 
@@ -34,6 +35,7 @@ export const routes: Routes = [
   {path: 'auth/login', component: LoginComponent},
   {path: 'auth/logout', component: LogoutComponent},
   { path: 'users/:userId', component: UserProfileComponent },
+  {path: 'search', component: SearchPaintingsComponent},
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' }
 
