@@ -4,17 +4,8 @@
             <div class="paintings-container">
                 <!-- Check if there are paintings -->
                 <ng-container *ngIf="paintings.length > 0; else noPaintings">
-                    <div *ngFor="let painting of paintings" class="painting-container">
-                        <div class="painting">
-                            <h2>{{painting.title}}</h2>
-                            <p><strong>Price:</strong> ${{painting.price}}</p>
-                            <p><strong>Technique:</strong> {{painting.technique}}</p>
-                            <img [src]="painting.imageUrl" [alt]="painting.title">
-                        </div>
-                        <a [routerLink]="['/paintings', painting._id]">
-                            <button class="details-btn">Details</button>
-                        </a>
-                    </div>
+                    <!-- Loop through paintings and use painting-item component -->
+                    <app-painting-item *ngFor="let painting of paintings" [painting]="painting" class="painting-container"></app-painting-item>
                 </ng-container>
                 <!-- If there are no paintings -->
                 <ng-template #noPaintings>
@@ -26,5 +17,3 @@
         </section>
     </body>
 </html>
-
-
