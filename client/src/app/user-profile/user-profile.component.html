@@ -1,22 +1,24 @@
-<div class="user-profile-container">
-    <div class="user-profile" *ngIf="user$ | async as user">
-        <h2><span class="user-email">{{ user.email }}</span>'s Profile</h2>
-        
-        <div class="profile-info">
-            <p><strong>For purchase, please email at: </strong> {{ user.email }}</p>
-            <p><strong>Created Paintings:</strong></p>
-            <ng-container *ngIf="userPaintings$ | async as userPaintings">
-                <ul *ngIf="userPaintings.length > 0" class="paintings-list">
-                    <li *ngFor="let painting of userPaintings">
-                        <div>
-                            <!-- Make the painting title clickable with routerLink -->
-                            <a [routerLink]="['/paintings', painting._id]" class="painting-title">{{ painting.title }}</a>
+<body>
+    <div class="user-profile-container">
+        <div class="background-image"></div>
+        <div class="user-profile" *ngIf="user$ | async as user">
+            <h2><span class="user-email">{{ user.email }}</span>'s Profile</h2>
+            
+            <div class="profile-info">
+                <p><strong>For purchase, please email at: </strong> {{ user.email }}</p>
+                <p><strong>Created Paintings:</strong></p>
+                <ng-container *ngIf="userPaintings$ | async as userPaintings">
+                    <div *ngIf="userPaintings.length > 0" class="paintings-container">
+                        <!-- Loop through userPaintings and use painting-item component -->
+                        <div class="paintings-list">
+                            <app-painting-item *ngFor="let painting of userPaintings" [painting]="painting" class="app-painting-item"></app-painting-item>
                         </div>
-                    </li>
-                </ul>
-                <p *ngIf="userPaintings.length === 0">No paintings found.</p>
-            </ng-container>
+                    </div>
+                    <p *ngIf="userPaintings.length === 0" class="no-paintings">No paintings found.</p>
+                </ng-container>
+            </div>
         </div>
     </div>
-</div>
-<p>user-profile-works</p>
+</body>
+
+

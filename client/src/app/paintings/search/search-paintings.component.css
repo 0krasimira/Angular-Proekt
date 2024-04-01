@@ -14,13 +14,17 @@ body {
     background-repeat: no-repeat; /* Do not repeat the background image */
   }
   
-  
+
   h2 {
     font-family: Arial, sans-serif;
     text-align: center;
     margin-bottom: 20px;
   }
   
+  h3 {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
   .form-group {
     margin-bottom: 20px;
   }
