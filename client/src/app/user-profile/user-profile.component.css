@@ -10,7 +10,7 @@ body {
 .user-profile-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center; /* Change to center for vertical alignment */
     min-height: 90vh; /* Use min-height instead of height */
     padding-top: 20px;
     width: 100%; /* Ensure full width */
@@ -22,7 +22,7 @@ body {
     border-radius: 10px;
     background-color: #f3b4ec72;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    width: 70%;
     max-width: 1000px; /* Limit maximum width */
     margin-top: 10px;
     display: flex;
@@ -41,7 +41,10 @@ body {
 
 .profile-info p.no-paintings {
     font-style: italic;
-    color: #666;
+    color: #ff0044; /* Changed color to red for emphasis */
+    font-size: 36px;
+    font-weight: bold; /* Added bold font weight */
+    text-align: center; /* Centered text */
 }
 
 .user-profile h2 {
@@ -76,4 +79,9 @@ body {
 .user-profile .painting-title:hover {
     color: #e1e458;
     transform: scale(1.15);
+}
+
+.user-profile .profile-info .created-paintings {
+    font-size: 30px; /* Increase font size */
+    text-align: center; /* Center align text */
 }

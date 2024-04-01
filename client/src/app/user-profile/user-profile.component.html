@@ -6,7 +6,7 @@
             
             <div class="profile-info">
                 <p><strong>For purchase, please email at: </strong> {{ user.email }}</p>
-                <p><strong>Created Paintings:</strong></p>
+                <p class="created-paintings"><strong>Created Paintings:</strong></p>
                 <ng-container *ngIf="userPaintings$ | async as userPaintings">
                     <div *ngIf="userPaintings.length > 0" class="paintings-container">
                         <!-- Loop through userPaintings and use painting-item component -->
@@ -14,11 +14,12 @@
                             <app-painting-item *ngFor="let painting of userPaintings" [painting]="painting" class="app-painting-item"></app-painting-item>
                         </div>
                     </div>
-                    <p *ngIf="userPaintings.length === 0" class="no-paintings">No paintings found.</p>
+                    <p *ngIf="userPaintings.length === 0" class="no-paintings">There are no paintings by this artist yet.</p>
                 </ng-container>
             </div>
         </div>
     </div>
 </body>
+
 
 
