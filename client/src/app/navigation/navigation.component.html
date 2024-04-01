@@ -11,8 +11,10 @@
     <!-- links for authenticated users -->
     <a (click)="logout()">Logout</a>
     <div class="logged-in-info">
-      <span class="hello">Hello,</span>
-      <span class="email">{{ userEmail$ | async }}</span>
+      <a [routerLink]="['/users', userId$ | async]">
+        <span class="hello">Hello,</span>
+        <span class="email">{{ userEmail$ | async }}</span>
+      </a>
     </div>
   </ng-container>
   
@@ -22,3 +24,4 @@
     <a routerLink="/auth/login">Login</a>
   </ng-template>
 </div>
+

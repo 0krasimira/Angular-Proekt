@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators'; // Import the map operator
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navigation',
@@ -12,13 +12,17 @@ import { map } from 'rxjs/operators'; // Import the map operator
 export class NavigationComponent implements OnInit {
   isLoggedIn$!: Observable<boolean>;
   userEmail$!: Observable<string>;
+  userId$!: Observable<string>;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.isLoggedIn$ = this.authService.isLoggedIn$;
     this.userEmail$ = this.authService.getUser().pipe(
-      map((user: any) => user ? user.email : '') // Explicitly specify the type of 'user'
+      map((user: any) => user ? user.email : '')
+    );
+    this.userId$ = this.authService.getUser().pipe(
+      map((user: any) => user ? user._id : '')
     );
   }
 
@@ -26,16 +30,11 @@ export class NavigationComponent implements OnInit {
     this.authService.logout().subscribe(
       () => {
         console.log('Logout successful');
-        // Handle any additional logout logic
-        // Redirect to home page
         this.router.navigate(['/home']);
       },
       (error: any) => {
         console.error('Error logging out:', error);
-        // Handle error if needed
       }
     );
   }
 }
-
-

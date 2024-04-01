@@ -26,32 +26,37 @@ export class UserProfileComponent implements OnInit {
     this.user$ = this.route.params.pipe(
       switchMap(params => {
         const userId = params['userId'];
+        console.log('User ID:', userId); // Log the userId
         if (userId) {
-          return this.authService.getUserById(userId);
+          return this.authService.getUserById(userId).pipe(
+            catchError(err => {
+              console.error('Error fetching user:', err);
+              return of(null);
+            })
+          );
         } else {
           console.error('User ID not provided.');
           return of(null);
         }
-      }),
-      catchError(() => of(null)) // Handle error if getUserById fails
+      })
     );
-  
+
     this.userPaintings$ = this.user$.pipe(
       switchMap(user => {
         if (user) {
-          return this.userProfileService.getUserPaintings(user._id);
+          return this.userProfileService.getUserPaintings(user._id).pipe(
+            catchError(err => {
+              console.error('Error fetching user paintings:', err);
+              return of([]);
+            })
+          );
         } else {
           console.error('User not found.');
           return of([]);
         }
-      }),
-      catchError(() => of([])) // Handle error if getUserPaintings fails
+      })
     );
-  
-    // Subscribe to userPaintings$ and log the paintings
-    this.userPaintings$.subscribe(paintings => {
-      console.log('User paintings:', paintings);
-    });
   }
 }
+
 
