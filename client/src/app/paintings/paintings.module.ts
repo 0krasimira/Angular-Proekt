@@ -7,6 +7,7 @@ import { AddPaintingComponent } from './add-painting/add-painting.component';
 import { AuthService } from '../auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeletePaintingComponent } from './delete-painting/delete-painting.component';
+import { PaintingItemComponent } from './painting-item/painting-item.component';
 
 
 
@@ -16,6 +17,7 @@ import { DeletePaintingComponent } from './delete-painting/delete-painting.compo
     PaintingsListComponent,
     PaintingDetailsComponent,
     DeletePaintingComponent,
+    PaintingItemComponent,
     
   ],
   imports: [
@@ -26,7 +28,7 @@ import { DeletePaintingComponent } from './delete-painting/delete-painting.compo
   exports: [
     PaintingsListComponent,
     PaintingDetailsComponent,
-    
+    PaintingItemComponent
   ],
 
   providers: [AuthService]

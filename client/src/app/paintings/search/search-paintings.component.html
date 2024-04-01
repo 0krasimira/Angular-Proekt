@@ -12,20 +12,12 @@
     <button type="submit" class="btn btn-primary">Search</button>
   </form>
 
-  <!-- Display paintings -->
+  <!-- Display paintings using painting-item component -->
   <div *ngIf="paintings.length > 0">
     <h3>Search Results:</h3>
     <div class="paintings-container">
-      <div *ngFor="let painting of paintings" class="card">
-        <img [src]="painting.imageUrl" class="card-img-top" alt="Painting Image">
-        <div class="card-body">
-          <h5 class="card-title">{{ painting.title }}</h5>
-          <p class="card-text">Year: {{ painting.year }}</p>
-          <p class="card-text">Technique: {{ painting.technique }}</p>
-          <p class="card-text">Description: {{ painting.description }}</p>
-          <p class="card-text">Price: {{ painting.price }}</p>
-        </div>
-      </div>
+      <!-- Loop through paintings and use painting-item component -->
+      <app-painting-item *ngFor="let painting of paintings" [painting]="painting"></app-painting-item>
     </div>
   </div>
 

@@ -8,9 +8,13 @@ body {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-image: url('https://i.pinimg.com/564x/68/6d/06/686d06e01ab988b1209931b7bb622d76.jpg'); /* Replace 'your-image-url.jpg' with the URL of your background image */
+    background-size: cover; /* Cover the entire container with the background image */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
   }
-
+  
+  
   h2 {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -37,8 +41,7 @@ body {
   
   button {
     font-family: Arial, sans-serif;
-    display: block;
-    width: 100%;
+    width: 100%; /* Adjust width */
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -51,9 +54,20 @@ body {
   button:hover {
     background-color: #0056b3;
   }
-
+  
   p {
     font-family: Arial, Helvetica, sans-serif;
     color: red;
+  }
+  
+  .paintings-container {
+    display: flex; /* Use flexbox */
+    flex-wrap: wrap; /* Allow items to wrap onto the next line */
+    justify-content: space-between; /* Distribute items evenly along the main axis */
+  }
+  
+  .app-painting-item {
+    flex-basis: calc(33.33% - 20px); /* Set the width of each item with margin */
+    margin-bottom: 20px; /* Adjust margin as needed */
   }
   

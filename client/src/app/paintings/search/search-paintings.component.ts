@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { environment } from 'src/app/environment/environment.development';
 
 @Component({
@@ -9,9 +8,9 @@ import { environment } from 'src/app/environment/environment.development';
   styleUrls: ['./search-paintings.component.css']
 })
 export class SearchPaintingsComponent {
-  minPrice: number = 0; // Initial value for minPrice
-  maxPrice: number = 0; // Initial value for maxPrice
-  paintings: any[] = []; // Initial empty array for paintings
+  minPrice: number = 0;
+  maxPrice: number = 0;
+  paintings: any[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +18,7 @@ export class SearchPaintingsComponent {
     console.log('search button clicked');
     const { apiUrl } = environment;
     const requestUrl = `${apiUrl}/search?minPrice=${this.minPrice}&maxPrice=${this.maxPrice}`;
-    console.log('Constructed API URL:', requestUrl); // Log the constructed API URL
+    console.log('Constructed API URL:', requestUrl);
     this.http.get<any[]>(requestUrl).subscribe(
       (data) => {
         console.log('Search request submitted');
@@ -30,6 +29,4 @@ export class SearchPaintingsComponent {
       }
     );
   }
-  
 }
-
