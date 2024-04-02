@@ -61,8 +61,8 @@ export class LoginComponent implements OnInit {
             const user: UserForAuth = {
               _id: userId,
               email: this.loginForm.value.email,
-              password: '', // You might not need to set this
-              token: token || '' // Ensure token is not null
+              password: '', 
+              token: token || '' 
             };
             this.authService.setUser(user);
             console.log('set user: ', user)
@@ -73,16 +73,12 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['home']);
           } else {
             console.error('Error: Unable to extract user ID from token');
-            this.errorMessage = 'Invalid credentials'; // Set errorMessage for invalid credentials
+            this.errorMessage = 'Invalid credentials'; 
           }
         },
         (error) => {
           console.error('Error logging user:', error);
-          if (error.error && error.error === 'Invalid email or password') {
-            this.errorMessage = 'Invalid email or password';
-          } else {
-            this.errorMessage = 'An error occurred. Please try again.';
-          }
+            this.errorMessage = 'Invalid details. Please, try again';
         }
       );
   }

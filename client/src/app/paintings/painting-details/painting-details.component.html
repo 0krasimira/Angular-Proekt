@@ -20,6 +20,11 @@
     <button class="profile-btn" *ngIf="isLoggedIn$ | async" (click)="goToArtistProfile(painting.author._id)">
       Go to artist's profile
     </button>
+    <!-- Edit and Delete buttons with router links -->
+    <a [routerLink]="['/paintings', paintingId, 'edit']" *ngIf="isUserAuthorized()">
+      <button class="edit-btn">Edit</button>
+    </a>
+    <button class="delete-btn" *ngIf="isUserAuthorized()" (click)="confirmDelete()">Delete</button>
   </div>
 </div>
 <div class="loading" *ngIf="!painting">
