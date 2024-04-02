@@ -85,3 +85,7 @@ body {
     font-size: 30px; /* Increase font size */
     text-align: center; /* Center align text */
 }
+
+.user-profile .for-purchase {
+    text-align: center; /* Center align text */
+}

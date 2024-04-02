@@ -50,7 +50,7 @@
       <label for="price">Price</label>
       <input type="number" class="form-control" id="price" formControlName="price">
       <div *ngIf="paintingForm.get('price')?.invalid && (paintingForm.get('price')?.touched || submitted)" class="text-danger" style="color: red;">
-        Price is required
+        Price enter a price higher than 0.
       </div>
     </div>
 

@@ -27,7 +27,7 @@ export class AddPaintingComponent implements OnInit {
       technique: ['', Validators.required],
       description: ['', Validators.required],
       imageUrl: ['', [Validators.required, Validators.pattern(/^https?:\/\//)]],
-      price: ['', Validators.required],
+      price: ['', [Validators.required, Validators.min(0)]],
       author: [{ value: this.authorEmail, disabled: true }, Validators.required] // Disable and set authorEmail
     });
   }

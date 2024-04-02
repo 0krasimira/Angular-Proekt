@@ -16,6 +16,7 @@ export class EditPaintingComponent implements OnInit {
   editPaintingForm!: FormGroup;
   painting: Painting | undefined;
   currentUserEmail: string | null = null; // Variable to store the current user's email
+  submitted = false;
 
   constructor(
     private router: Router,
@@ -31,9 +32,9 @@ export class EditPaintingComponent implements OnInit {
       year: ['', Validators.required],
       technique: ['', Validators.required],
       description: ['', Validators.required],
-      imageUrl: ['', Validators.required],
+      imageUrl: ['', [Validators.required, Validators.pattern(/^https?:\/\//)]],
       price: ['', [Validators.required, Validators.min(0)]],
-      author: ['', Validators.required]
+      author: [{ value: '', disabled: true }, Validators.required]
     });
 
     const paintingId = this.route.snapshot.params['paintingId'] || '';
@@ -84,6 +85,7 @@ export class EditPaintingComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.submitted = true;
     if (this.editPaintingForm.valid && this.painting && this.currentUserEmail === this.painting.author.email) {
       const updatedPaintingData = this.editPaintingForm.value;
       this.editPaintingService.updatePainting(this.painting._id, updatedPaintingData).subscribe(
@@ -96,8 +98,10 @@ export class EditPaintingComponent implements OnInit {
         }
       );
     } else {
-      console.error('You are not authorized to edit this painting.');
-      // Handle unauthorized access
+      console.error('You are not authorized to edit this painting. Please, log back in.');
+      // Here you can navigate the user to the login page or display a message.
+      // For demonstration, let's navigate to the login page
+      this.router.navigate(['auth/login']);
     }
   }
 }

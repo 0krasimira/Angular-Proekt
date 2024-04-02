@@ -4,10 +4,12 @@
   display: block;
   padding-bottom: 60px; 
   margin: 0;
-  background-color: #ffb6c1; 
+  background-image: linear-gradient(to bottom, #ff69b4, #ffdeb6); /* Gradient from #ffb6c1 to #ff69b4 */
   min-height: 100vh; 
   position: relative; 
 }
+
+/* #ffdeb6, #ff69b4 */
 
 footer {
   position: absolute; /* Position the footer at the bottom */

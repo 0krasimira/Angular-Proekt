@@ -4,30 +4,51 @@
         <div class="form-group">
             <label for="title">Title:</label>
             <input type="text" id="title" formControlName="title" placeholder="Painting Title">
+            <div *ngIf="editPaintingForm.get('title')?.invalid && editPaintingForm.get('title')?.touched" class="text-danger" style="color: red;">
+                Title is required.
+            </div>
         </div>
         <div class="form-group">
             <label for="year">Year:</label>
             <input type="number" id="year" formControlName="year" placeholder="Painting Year">
+            <div *ngIf="editPaintingForm.get('year')?.invalid && editPaintingForm.get('year')?.touched" class="text-danger" style="color: red;">
+                Year is required.
+            </div>
         </div>
         <div class="form-group">
             <label for="technique">Technique:</label>
             <input type="text" id="technique" formControlName="technique" placeholder="Painting Technique">
+            <div *ngIf="editPaintingForm.get('technique')?.invalid && editPaintingForm.get('technique')?.touched" class="text-danger" style="color: red;">
+                Technique is required.
+            </div>
         </div>
         <div class="form-group">
             <label for="description">Description:</label>
             <textarea id="description" formControlName="description" placeholder="Painting Description"></textarea>
+            <div *ngIf="editPaintingForm.get('description')?.invalid && editPaintingForm.get('description')?.touched" class="text-danger" style="color: red;">
+                Description is required.
+            </div>
         </div>
         <div class="form-group">
             <label for="imageUrl">Image:</label>
             <input type="text" id="imageUrl" formControlName="imageUrl" placeholder="URL to Painting Image">
+            <div *ngIf="editPaintingForm.get('imageUrl')?.invalid && editPaintingForm.get('imageUrl')?.touched" class="text-danger" style="color: red;">
+                Image URL is required.
+            </div>
         </div>
         <div class="form-group">
             <label for="price">Price:</label>
-            <input type="number" id="price" formControlName="price" placeholder="Price">
+            <input type="number" class="form-control" id="price" formControlName="price" placeholder="Price">
+            <div *ngIf="editPaintingForm.get('price')?.invalid && editPaintingForm.get('price')?.touched" class="text-danger" style="color: red;">
+                Price is required.
+            </div>
+            <div *ngIf="editPaintingForm.get('price')?.hasError('min') && (editPaintingForm.get('price')?.touched || submitted)" class="text-danger" style="color: red;">
+                Please enter a price higher than 0.
+            </div>
         </div>
         <div class="form-group">
             <label for="author">Author:</label>
-            <input type="text" id="author" formControlName="author" placeholder="Author Name">
+            <input type="text" id="author" formControlName="author" placeholder="Author Name" [disabled]="true">
         </div>
         <div class="button-container">
             <button type="submit" [disabled]="editPaintingForm.invalid">Save Changes</button>

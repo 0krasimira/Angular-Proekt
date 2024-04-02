@@ -43,7 +43,7 @@ router.post('/login', isGuest, async (req, res) => {
 });
 
 router.get('/logout', isAuth, (req, res) => {
-    res.status(200).clearCookie('token').send();
+     res.status(200).clearCookie('token').send();
 });
 
 router.get('/:userId', async (req, res) => {

@@ -5,7 +5,7 @@
             <h2><span class="user-email">{{ user.email }}</span>'s Profile</h2>
             
             <div class="profile-info">
-                <p><strong>For purchase, please email at: </strong> {{ user.email }}</p>
+                <p class="for-purchase"><strong>For purchase, please email at: </strong> {{ user.email }}</p>
                 <p class="created-paintings"><strong>Created Paintings:</strong></p>
                 <ng-container *ngIf="userPaintings$ | async as userPaintings">
                     <div *ngIf="userPaintings.length > 0" class="paintings-container">
@@ -14,7 +14,7 @@
                             <app-painting-item *ngFor="let painting of userPaintings" [painting]="painting" class="app-painting-item"></app-painting-item>
                         </div>
                     </div>
-                    <p *ngIf="userPaintings.length === 0" class="no-paintings">There are no paintings by this artist yet.</p>
+                    <p *ngIf="userPaintings.length === 0" class="no-paintings">This artist has not added any paintings yet.</p>
                 </ng-container>
             </div>
         </div>
