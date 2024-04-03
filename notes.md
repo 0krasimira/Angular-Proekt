@@ -32,10 +32,10 @@ A logged in user can access the following pages:
     *Edit - allows the author to edit their painting's details. 
     *Delete - allows the author to delete the painting from their portfolio.
     *Profile - each artist can create a personalized profile that will showcase their portfolio of created paintings. Logged in artists can access both their profile and other artist's profiles.
-
+    *Likes - a logged in user can like other artist's paintings.
 
 
 This artist's blog allows people to explore and admire the creations of other artists within the community.
-You can discover new techniques, styles, and mediums through the diverse range of artworks on display.
+You can discover new techniques, styles, and mediums through the diverse range of artworks on display and support other artists by liking their artworks.
 I invite you all to join Artist's Ally today!
 
