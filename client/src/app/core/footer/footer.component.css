@@ -1,22 +1,11 @@
-/* footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    background-color: #ff99c9;
-    color: #fff; 
-    font-family: Arial, Helvetica, sans-serif;
-  }
-   */
-
-   :host {
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    background-color: #ff99c9; /* Baby pink */
-    color: #fff; /* White text */
-    font-family: Arial, Helvetica, sans-serif;
-    position: fixed;
-    bottom: 0;
-  }
+:host {
+  width: 100%;
+  text-align: center;
+  padding: 10px 20px; /* Decrease the vertical padding */
+  font-size: 14px; /* Decrease the font size */
+  color: #fff; /* White text */
+  font-family: Arial, Helvetica, sans-serif;
+  position: fixed;
+  bottom: 0;
+  background: radial-gradient(circle, #e01e65 30%, #ff99c9 70%); /* Radial gradient */
+}
