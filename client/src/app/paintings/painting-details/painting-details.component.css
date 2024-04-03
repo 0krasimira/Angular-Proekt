@@ -1,7 +1,7 @@
 /* CSS for .painting-details class */
 .painting-details {
   max-width: 1000px; /* Adjust the width as needed */
-  margin: 150px auto 50px auto; /* Move it lower by increasing the top margin */
+  margin: 75px auto 50px auto; /* Move it higher by increasing the negative top margin */
   padding: 20px;
   background-color: #6d21639c; /* Light Pink */
   border-radius: 10px;
@@ -12,6 +12,7 @@
   font-family: Arial, sans-serif; /* Ensure Arial font */
   font-size: 20px;
 }
+
 
 /* CSS for the entire HTML */
 html {
