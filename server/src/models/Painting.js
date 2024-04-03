@@ -26,10 +26,10 @@ const paintingSchema = new mongoose.Schema({
         type: Number, 
         required: [true, 'All fields are mandatory'],
     },
-    // likes: [{
-    //     type: mongoose.Types.ObjectId,
-    //     ref: "Cast"
-    // }],
+    likes: [{ 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User" 
+    }],
     author: {
         type: mongoose.Types.ObjectId,
         ref: "User"

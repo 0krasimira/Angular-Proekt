@@ -11,22 +11,29 @@
     <li class="author" *ngIf="painting.author">
       <strong>Author:</strong> {{ painting.author.email }} 
     </li>
+    <div class="like-section">
+      <p class="like-count" *ngIf="painting.likes"><strong class="like-label">Likes:</strong> {{ painting.likes.length }}</p>
+      <button class="like-btn" *ngIf="(isLoggedIn$ | async) && !(isUserAuthorized())" (click)="likePainting(painting._id)" [disabled]="painting && currentUser && painting.likes?.includes(currentUser._id || '')">
+        {{ painting && painting.likes?.includes(currentUser?._id || '') ? 'You have liked this painting' : 'Like' }}
+      </button>
+      <p class="like-message" *ngIf="painting.likes?.includes(currentUser?._id || '')">Thank you for your like! ❤️</p>
+
+    </div>
   </ul>
   <div class="buttons">
     <a [routerLink]="['/paintings']">
       <button class="back-btn">Back</button>
     </a>
-    
     <button class="profile-btn" *ngIf="isLoggedIn$ | async" (click)="goToArtistProfile(painting.author._id)">
       Go to artist's profile
     </button>
-    <!-- Edit and Delete buttons with router links -->
-    <a [routerLink]="['/paintings', paintingId, 'edit']" *ngIf="isUserAuthorized()">
+    <a [routerLink]="['/paintings', paintingId, 'edit']" *ngIf="(isLoggedIn$ | async) && (isUserAuthorized())">
       <button class="edit-btn">Edit</button>
     </a>
-    <button class="delete-btn" *ngIf="isUserAuthorized()" (click)="confirmDelete()">Delete</button>
+    <button class="delete-btn" *ngIf="(isLoggedIn$ | async) && (isUserAuthorized())" (click)="confirmDelete()">Delete</button>
   </div>
 </div>
+
 <div class="loading" *ngIf="!painting">
   <p>Loading...</p>
 </div>

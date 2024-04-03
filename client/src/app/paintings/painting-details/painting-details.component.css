@@ -126,3 +126,35 @@ a, .buttons {
               -2px 2px 0 #000080,
                2px 2px 0 #000080; /* Framing effect */
 }
+
+.like-label {
+  color: #ffdab9; /* Peach */
+  font-size: 20px;
+}
+
+
+/* CSS for the Like button */
+.like-btn {
+  background-color: #ffdab9; /* Peach */
+  color: #23102d; /* Darker shade of gray */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 5px;
+}
+
+.like-btn:hover {
+  background-color: #ff4d6b; /* Darker shade of Peach on hover */
+  color: #fff; /* White text on hover */
+}
+
+/* CSS for the message "You have already liked this painting" */
+.like-message {
+  color: #ffdab9; /* Peach */
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+}

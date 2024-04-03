@@ -20,12 +20,5 @@ export class ApiService {
     const {apiUrl} = environment
     return this.http.get<Painting[]>(`${apiUrl}/paintings/${id}`)
   }
-  // getPosts(limit?: number){
-  //   const {apiUrl} = environment
-  //   let url = ${apiUrl}/posts
-  //   if(limit){
-  //     url += ?limit=${limit}
-  //   }
-  //   return this.http.get<Post[]>(url)
-  // }
+
 }

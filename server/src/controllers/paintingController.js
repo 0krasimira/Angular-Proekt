@@ -130,5 +130,17 @@ router.get('/search', async (req, res) => {
     }
   });
 
+  router.post('/paintings/:paintingId/like', isAuth, async (req, res) => {
+    const paintingId = req.params.paintingId;
+    const userId = req.user.id;
+    try {
+      // Call the likePainting function to like the painting
+      const likedPainting = await paintingManager.likePainting(paintingId, userId);
+      res.status(200).json({ message: 'Painting liked successfully', likedPainting });
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
 module.exports = router
 

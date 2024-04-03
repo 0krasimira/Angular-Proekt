@@ -99,8 +99,6 @@ export class EditPaintingComponent implements OnInit {
       );
     } else {
       console.error('You are not authorized to edit this painting. Please, log back in.');
-      // Here you can navigate the user to the login page or display a message.
-      // For demonstration, let's navigate to the login page
       this.router.navigate(['auth/login']);
     }
   }

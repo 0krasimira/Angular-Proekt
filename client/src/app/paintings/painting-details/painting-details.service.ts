@@ -18,8 +18,8 @@ export class PaintingDetailsService implements OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  getPaintings(){
-    const {apiUrl} = environment
+  getPaintings() {
+    const { apiUrl } = environment
     return this.http.get<Painting[]>(`${apiUrl}/paintings`)
   }
 
@@ -40,6 +40,13 @@ export class PaintingDetailsService implements OnDestroy {
 
   deletePainting(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.apiUrl}/paintings/${id}/delete`)
+      .pipe(
+        takeUntil(this.unsubscribe$)
+      );
+  }
+
+  likePainting(id: string): Observable<Painting> {
+    return this.http.post<Painting>(`${environment.apiUrl}/paintings/${id}/like`, {})
       .pipe(
         takeUntil(this.unsubscribe$)
       );

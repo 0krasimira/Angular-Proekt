@@ -4,21 +4,38 @@ Artist's Ally is a vibrant platform tailored specifically for self-taught artist
 
 It offers the following functionalities:
 
-1. Artist Profiles:
+1. Not logged in:
 
-Each artist can create a personalized profile that will showcase their portfolio of created paintings.
+A person who does not have a profile can access the following pages: 
 
-2. Painting Management:
+    *Home, 
+    *About, 
+    *Contacs us, 
+    *All paintings - where they can see a list of all added paintings within the blog,
+    *Search - where paintings can be found based on a defined pricing criteria, 
+    *Register, 
+    *Login, 
+    *Painting Details (which only gives the option to go back to All paintings),
+    *Add painting (which redirects the user to the login page with a prompt to login in order to add or edit a painting.)
 
-Artists can edit and update artworks as their portfolio grows. For example, they may wish to increase the price of a painting they are selling, or change its title or description - this is absolutely possible. 
+2. Logged in.
 
-Artists can effortlessly delete artworks that no longer represent their artistic vision. Or, in a case a painting is no longer available for sale (great, this means that it was most likely sold), it can be deleted from the profile.
+A logged in user can access the following pages:
 
-3. Inspiration and Exploration:
+    *Home, 
+    *About, 
+    *Contact us,
+    *All paintings,
+    *Search,
+    *Add painting - validation messages appear in case of invalid data.
+    *Painting details - from here, a logged in user can Go to the profile of the painting's author. *Additionally, if the logged in user is the author, they have the option to Edit and Delete the painting.
+    *Edit - allows the author to edit their painting's details. 
+    *Delete - allows the author to delete the painting from their portfolio.
+    *Profile - each artist can create a personalized profile that will showcase their portfolio of created paintings. Logged in artists can access both their profile and other artist's profiles.
 
-Explore and admire the creations of other artists within the community.
-Discover new techniques, styles, and mediums through the diverse range of artworks on display.
-Find inspiration in the stories and journeys shared by fellow self-taught artists.
 
+
+This artist's blog allows people to explore and admire the creations of other artists within the community.
+You can discover new techniques, styles, and mediums through the diverse range of artworks on display.
 I invite you all to join Artist's Ally today!
 

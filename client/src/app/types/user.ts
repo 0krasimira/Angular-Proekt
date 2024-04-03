@@ -7,8 +7,7 @@ export interface User {
   _id: string;
   email: string;
   password: string;
-  token: string;
-  
+  token: string;  
 }
 
 export interface UserForAuth extends User {
@@ -17,7 +16,6 @@ export interface UserForAuth extends User {
   email: string;
   password: string;
   token: string;
-  paintings?: Painting[]
-  
+  paintings?: Painting[],
 }
 

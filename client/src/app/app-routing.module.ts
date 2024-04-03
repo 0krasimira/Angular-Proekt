@@ -17,11 +17,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchPaintingsComponent } from './paintings/search/search-paintings.component';
 
 
-
-
-// import { BooksComponent } from '../';
-// import { ContactComponent } from './contact/contact.component';
-
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },

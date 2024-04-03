@@ -9,5 +9,6 @@ export interface Painting {
     price: number,
     description: string,
     imageUrl: string,
-    _id: string
+    _id: string,
+    likes: string[]; // Array of user IDs who liked the painting
 }

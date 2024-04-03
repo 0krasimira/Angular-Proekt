@@ -20,13 +20,9 @@ export class UserProfileService {
           // User not found, return empty array
           return of([]);
         } else {
-          // Handle other errors
           throw error;
         }
       })
     );
   }
 }
-
-
-// http://localhost:3000/auth/:userId/paintings
