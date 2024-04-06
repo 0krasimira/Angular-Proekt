@@ -29,12 +29,11 @@ export class DeletePaintingComponent implements OnInit {
       this.deletePaintingService.deletePainting(this.paintingId).subscribe(
         () => {
           console.log('Painting deleted successfully');
-          // Redirect to paintings list or any other desired route
+          // Redirect to paintings list
           this.router.navigate(['/paintings']);
         },
         (error) => {
           console.error('Error deleting painting:', error);
-          // Handle error if needed
         }
       );
     }

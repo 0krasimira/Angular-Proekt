@@ -14,12 +14,13 @@
                             <app-painting-item *ngFor="let painting of userPaintings" [painting]="painting" class="app-painting-item"></app-painting-item>
                         </div>
                     </div>
-                    <p *ngIf="userPaintings.length === 0" class="no-paintings">This artist has not added any paintings yet.</p>
+                    <p *ngIf="userPaintings.length === 0" class="no-paintings">No paintings added yet.</p>
                 </ng-container>
             </div>
         </div>
     </div>
 </body>
+
 
 
 

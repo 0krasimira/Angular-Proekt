@@ -9,24 +9,24 @@ import { Painting } from './types/painting';
   providedIn: 'root'
 })
 export class AuthService {
-  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private userEmailSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
-  private userIdSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
-  private userSubject: BehaviorSubject<UserForAuth | null> = new BehaviorSubject<UserForAuth | null>(null);
-  userEmail$: Observable<string | null> = this.userEmailSubject.asObservable();
-  isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
-  userId$: Observable<string | null> = this.userIdSubject.asObservable();
-  user$: Observable<UserForAuth | null> = this.userSubject.asObservable();
+  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false); // tracks if user is logged in
+  private userEmailSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null); // stores and observes user's email
+  private userIdSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null); // stores and observes user's id
+  private userSubject: BehaviorSubject<UserForAuth | null> = new BehaviorSubject<UserForAuth | null>(null); // stores and observes user's authentication details
+  userEmail$: Observable<string | null> = this.userEmailSubject.asObservable(); // subscribes to changes in user's email - to display the hello message in the nav
+  isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable(); // subscribes to changes in the auth status
+  userId$: Observable<string | null> = this.userIdSubject.asObservable(); // subscribes to changes in userid
+  user$: Observable<UserForAuth | null> = this.userSubject.asObservable(); // subscribes to changes in user's auth details
 
 
   constructor(private httpClient: HttpClient) { }
 
-  setUser(user: UserForAuth): void {
+  setUser(user: UserForAuth): void { 
     console.log(`setting user: ${user.email}`);
     this.userSubject.next(user);
   }
 
-  getUser(): Observable<UserForAuth | null> {
+  getUser(): Observable<UserForAuth | null> { 
     console.log('getting user:', this.userSubject.getValue()?.email);
     return this.userSubject.asObservable();
   }
@@ -56,7 +56,7 @@ export class AuthService {
     console.log('Setting user ID:', userId);
   }
 
-  getUserIdFromToken(token: string): string | null {
+  getUserIdFromToken(token: string): string | null { //for login
     if (!token) {
       return null;
     }
@@ -85,12 +85,9 @@ export class AuthService {
   }
 
   getUserById(userId: string): Observable<UserForAuth | null> {
-    return this.httpClient.get<UserForAuth>(`${environment.apiUrl}/auth/${userId}`);
+    return this.httpClient.get<UserForAuth>(`${environment.apiUrl}/auth/${userId}`); // for user-profile
   }
 
-  getPaintingsByUser(userId: string): Observable<Painting[]> {
-    return this.httpClient.get<Painting[]>(`${environment.apiUrl}/auth/${userId}/paintings`);
-  }
 
 
 }

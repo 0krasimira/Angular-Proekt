@@ -31,8 +31,6 @@ export class RegisterComponent implements OnInit {
         this.errorMessage = 'Passwords do not match';
         return;
       }
-
-      
   
       // Register user
       this.registerService.registerUser(this.registerForm.value).subscribe(

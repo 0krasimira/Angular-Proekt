@@ -16,8 +16,9 @@
       <button class="like-btn" *ngIf="(isLoggedIn$ | async) && !(isUserAuthorized())" (click)="likePainting(painting._id)" [disabled]="painting && currentUser && painting.likes?.includes(currentUser._id || '')">
         {{ painting && painting.likes?.includes(currentUser?._id || '') ? 'You have liked this painting' : 'Like' }}
       </button>
-      <p class="like-message" *ngIf="painting.likes?.includes(currentUser?._id || '') && painting.author._id !== currentUser?._id">Thank you for your like! ❤️</p>
-
+      <p class="like-message" *ngIf="(isLoggedIn$ | async) && painting?.likes?.includes(currentUser?._id || '') && painting?.author?._id !== currentUser?._id">
+        Thank you for your like! ❤️
+      </p>
     </div>
   </ul>
   <div class="buttons">
@@ -37,3 +38,4 @@
 <div class="loading" *ngIf="!painting">
   <p>Loading...</p>
 </div>
+

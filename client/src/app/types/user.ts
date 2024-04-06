@@ -18,4 +18,3 @@ export interface UserForAuth extends User {
   token: string;
   paintings?: Painting[],
 }
-

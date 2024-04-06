@@ -16,7 +16,6 @@ const routes: Routes = [
   { path: 'paintings/:paintingId', component: PaintingDetailsComponent },
   { path: 'add', component: AddPaintingComponent, canActivate: [AuthGuardService]},
   {path: 'search', component: SearchPaintingsComponent},
-  // {path: 'users/:userId', component: UserProfileComponent},
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' }
   

@@ -21,9 +21,9 @@ export class SearchPaintingsComponent {
     const requestUrl = `${apiUrl}/search?minPrice=${this.minPrice}&maxPrice=${this.maxPrice}`;
     console.log('Constructed API URL:', requestUrl);
     this.http.get<Painting[]>(requestUrl).subscribe(
-      (data) => {
+      (data) => { // response from the api
         console.log('Search request submitted');
-        this.paintings = data;
+        this.paintings = data; // Assigning the response data to the 'paintings' array to display found paintings
       },
       (error) => {
         console.error('Error fetching search results:', error);

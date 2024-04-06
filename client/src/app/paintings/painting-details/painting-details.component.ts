@@ -23,7 +23,7 @@ export class PaintingDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private paintingDetailsService: PaintingDetailsService,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
     this.isLoggedIn$ = this.authService.isLoggedIn$;
   }

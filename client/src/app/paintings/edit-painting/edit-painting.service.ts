@@ -22,7 +22,7 @@ export class EditPaintingService {
     return this.http.get<Painting>(url, requestOptions);
   }
 
-  updatePainting(paintingId: string, updatedPaintingData: any): Observable<Painting> {
+  updatePainting(paintingId: string, updatedPaintingData: Painting): Observable<Painting> {
     const { apiUrl } = environment;
     const url = `${apiUrl}/paintings/${paintingId}/edit`; 
     return this.http.post<Painting>(url, updatedPaintingData);

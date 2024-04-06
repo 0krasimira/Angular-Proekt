@@ -2,9 +2,6 @@ const router = require("express").Router()
 const { getErrorMessage } = require('../utils/errorUtils')
 const userManager = require('../managers/userManager')
 const { isGuest, isAuth } = require('../middlewares/authMiddleware')
-const User = require("../models/User")
-const paintingManager = require('../managers/paintingManager')
-const { ok } = require("assert")
 const Painting = require("../models/Painting")
 
 

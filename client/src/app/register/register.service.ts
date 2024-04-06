@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiService } from '../api.service';
 import { environment } from '../environment/environment.development';
-import { User } from '../types/user';
+import { UserForAuth } from '../types/user';
 import { AuthService } from '../auth.service';
 import { tap } from 'rxjs/operators';
 
@@ -11,16 +11,12 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class RegisterService {
-  
+
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  registerUser(userData: any): Observable<any> {
+  registerUser(userData: UserForAuth): Observable<UserForAuth> { // returns userforauth type
     const { apiUrl } = environment;
-    return this.http.post<User>(`${apiUrl}/auth/register`, userData).pipe(
-      tap(() => {
-        this.authService.updateAuthStatus(true);
-      })
-    );
+    return this.http.post<UserForAuth>(`${apiUrl}/auth/register`, userData);
   }
 }

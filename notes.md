@@ -10,8 +10,8 @@ A person who does not have a profile can access the following pages:
 
     *Home, 
     *About, 
-    *Contacs us, 
-    *All paintings - where they can see a list of all added paintings within the blog,
+    *Contact us, 
+    *All paintings - where they can view a list of all added paintings within the blog,
     *Search - where paintings can be found based on a defined pricing criteria, 
     *Register, 
     *Login, 
@@ -28,16 +28,15 @@ A logged in user can access the following pages:
     *All paintings,
     *Search,
     *Add painting - validation messages appear in case of invalid data.
-    *Painting details - from here, a logged in user can Go to the profile of the painting's author. *Additionally, if the logged in user is the author, they have the option to Edit and Delete the painting.
+    *Painting details - from here, a logged in user can go to the profile of the painting's author. 
+
+    If the logged in user is the author, they have the option to:
     *Edit - allows the author to edit their painting's details. 
     *Delete - allows the author to delete the painting from their portfolio.
-    *Profile - each artist can create a personalized profile that will showcase their portfolio of created paintings. Logged in artists can access both their profile and other artist's profiles.
-    *Likes - a logged in user can like other artist's paintings.
 
+    *Profile - each artist can create a personalized profile that will showcase their portfolio of created paintings. Logged in artists can access both their profile and other artists' profiles.
+    *Likes - a logged in user can like other artists' paintings.
 
-This artist's blog allows people to explore and admire the creations of other artists within the community.
-You can discover new techniques, styles, and mediums through the diverse range of artworks on display and support other artists by liking their artworks.
-I invite you all to join Artist's Ally today!
 
 Project architecture:
 
@@ -64,4 +63,28 @@ Outside of these modules, there are 9 separate components:
     8. Register,
     9. User Profile.
 
-Services are implemented within the components, where needed. They are held within the given Component's folder.    
+Services are implemented within the components where needed. Most of them are held within the given Component's folder - those are:
+
+    1. Register service,
+    2. Login service,
+    3. Logout service,
+    4. Add painting service,
+    5. Delete painting service,
+    6. Edit painting service,
+    7. Painting details service,
+    8. User profile service,
+
+In addition, there are 3 more services:
+
+    1. Api Service - fetches data from the backend, related to paintings - gets all paintings and a single painting by its ID.
+    2. Auth-service - manages authentication-related functionalities and user data, fetching from and sending data to the db.
+    3. Auth guard service - this is an authentication guard that ensures that certain routes are only accessible to authenticated users.
+
+One interceptor:
+    Token Interceptor - aimed to intercept and manipulate HTTP requests and responses. The interceptor retrieves the token, adds an Authorization header with a bearer token to outgoing HTTP requests, thus allowing easy authentication with the backend. 
+
+There is a Types folder which holds the 2 types used throughout the application - Painting and User, as well as UserForAuth, where User interface is used for general user management tasks, while the UserForAuth interface is for authentication-related operations.
+
+This artist's blog allows people to explore and admire the creations of other artists within the community.
+You can discover new techniques, styles, and mediums through the diverse range of artworks on display and support other artists by liking their artworks.
+I invite you all to join Artist's Ally today!

@@ -64,11 +64,12 @@ export class AddPaintingComponent implements OnInit {
         this.router.navigate(['/paintings']);
       },
       (error) => {
+        //in case of network or server error
         console.error('Error submitting painting:', error);
         if (error.error && error.error.message) {
-          this.errorMessage = error.error.message;
+          this.errorMessage = error.error.message; // validation errors with specific message indicating the failure
         } else {
-          this.errorMessage = 'An error occurred while submitting the form.';
+          this.errorMessage = 'An error occurred while submitting the form.'; //validation errors
         }
       }
     );

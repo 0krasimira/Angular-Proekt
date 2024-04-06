@@ -29,9 +29,7 @@ exports.create = async (userId, paintingData) => {
     }
 };
 
-// Assuming you have a Painting model defined somewhere
 
-// Function to like a painting by its ID
 exports.likePainting = async (paintingId, userId) => {
     try {
       // Find the painting by ID

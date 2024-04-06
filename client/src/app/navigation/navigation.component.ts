@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { UserForAuth } from '../types/user';
 
 @Component({
   selector: 'app-navigation',
@@ -19,10 +20,10 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn$ = this.authService.isLoggedIn$;
     this.userEmail$ = this.authService.getUser().pipe(
-      map((user: any) => user ? user.email : '')
+      map((user: UserForAuth | null) => user ? user.email : '') // check if userforAuth is null - in case he is not logged in
     );
     this.userId$ = this.authService.getUser().pipe(
-      map((user: any) => user ? user._id : '')
+      map((user: UserForAuth | null) => user ? user._id : '') // check if userforAuth is null - in case he is not logged in
     );
   }
 
@@ -30,6 +31,7 @@ export class NavigationComponent implements OnInit {
     this.authService.logout().subscribe(
       () => {
         console.log('Logout successful');
+        this.isLoggedIn$ = this.authService.isLoggedIn$; // Update isLoggedIn$ after logout
         this.router.navigate(['/home']);
       },
       (error: any) => {

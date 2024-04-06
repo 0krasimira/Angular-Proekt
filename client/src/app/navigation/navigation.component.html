@@ -6,7 +6,6 @@
   <a routerLink="/contacts">Contact us</a>
   <a routerLink="/add">Add painting</a>
 
-  <!-- Render navigation links based on authentication status -->
   <ng-container *ngIf="isLoggedIn$ | async; else notLoggedIn">
     <!-- links for authenticated users -->
     <a (click)="logout()">Logout</a>
